@@ -27,6 +27,7 @@ public class BoardTest {
 		assertSame(true, b.isPositionEmpty(1));
 	}
 	
+	@Test
 	public void testSetPosition(){
 		assertSame(true, b.isPositionEmpty(1));
 		b.setPosition(1, t1);

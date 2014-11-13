@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Muehle" project="Muehle" tests="12" started="12" failures="0" errors="0" ignored="0">
+  <testsuite name="de.htwg.se.Muehle.Model.PlayerTest" time="0.0">
+    <testcase name="testSetTokenCount" classname="de.htwg.se.Muehle.Model.PlayerTest" time="0.0"/>
+    <testcase name="testGetColor" classname="de.htwg.se.Muehle.Model.PlayerTest" time="0.0"/>
+    <testcase name="testGetPlaceableTokenCount" classname="de.htwg.se.Muehle.Model.PlayerTest" time="0.0"/>
+    <testcase name="testGetName" classname="de.htwg.se.Muehle.Model.PlayerTest" time="0.0"/>
+    <testcase name="testSetPlaceableTokenCount" classname="de.htwg.se.Muehle.Model.PlayerTest" time="0.0"/>
+    <testcase name="testGetTokenCount" classname="de.htwg.se.Muehle.Model.PlayerTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="de.htwg.se.Muehle.Model.PositionTest" time="0.015">
+    <testcase name="testGetPosition" classname="de.htwg.se.Muehle.Model.PositionTest" time="0.015"/>
+  </testsuite>
+  <testsuite name="de.htwg.se.Muehle.Model.TokenTest" time="0.0">
+    <testcase name="testSetTokenState" classname="de.htwg.se.Muehle.Model.TokenTest" time="0.0"/>
+    <testcase name="testGetPlayerOfToken" classname="de.htwg.se.Muehle.Model.TokenTest" time="0.0"/>
+    <testcase name="testGetTokenState" classname="de.htwg.se.Muehle.Model.TokenTest" time="0.0"/>
+    <testcase name="testGetTokenPosition" classname="de.htwg.se.Muehle.Model.TokenTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="de.htwg.se.Muehle.Model.BoardTest" time="0.0">
+    <testcase name="testIsPositionEmpty" classname="de.htwg.se.Muehle.Model.BoardTest" time="0.0"/>
+  </testsuite>
+</testrun>

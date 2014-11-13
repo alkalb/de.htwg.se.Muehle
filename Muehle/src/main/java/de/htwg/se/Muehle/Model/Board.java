@@ -8,11 +8,11 @@ public class Board {
 	Token board[];
 	HashMap<Integer, ArrayList<Integer>> connections;
 	
-	public void Board(){
+	public Board(){
 		board = new Token[24];
-		for(int i = 0; i < board.length; i++){
+		/*for(int i = 0; i < board.length; i++){
 			board[i] = new Token(null, null, null);
-		}
+		}*/
 		
 		connections = new HashMap<Integer, ArrayList<Integer>>();
 		/*for(int i = 0; i < 24; i++){
