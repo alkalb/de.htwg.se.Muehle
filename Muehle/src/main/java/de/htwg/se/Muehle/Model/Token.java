@@ -7,6 +7,7 @@ public class Token {
 	
 	public Token(Player playerOfToken, Position position, String tokenState){
 		this.playerOfToken = playerOfToken;
+		this.tokenPosition = position;
 		this.tokenState = tokenState;
 	}
 	
