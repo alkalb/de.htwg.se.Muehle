@@ -8,13 +8,13 @@ public class Player {
 	private Color color;
 	private int tokenCount;
 	private int placeableTokenCount;
-	private final static int maxToken = 9;
+	private static final int MAXTOKEN = 9;
 	
 	public Player(String name, Color color){
 		this.name = name;
 		this.color = color;
 		this.tokenCount = 0;
-		this.placeableTokenCount = maxToken;
+		this.placeableTokenCount = MAXTOKEN;
 	}
 	
 	public String getName(){
