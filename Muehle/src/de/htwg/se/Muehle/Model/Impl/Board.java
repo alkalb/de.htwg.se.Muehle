@@ -6,12 +6,12 @@ import java.util.Map;
 
 public class Board {
 
- private final int Tokencount = 24;
+ private final static int tokenCount = 24;
  private Token board[];
  private Map<Integer, ArrayList<Integer>> connections;
 
  public Board(){
- board = new Token[Tokencount];
+ board = new Token[tokenCount];
  /*for(int i = 0; i < board.length; i++){
 	board[i] = new Token(null, null, null);
 	}*/

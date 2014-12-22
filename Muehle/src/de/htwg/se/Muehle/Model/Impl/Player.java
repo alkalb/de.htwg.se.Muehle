@@ -8,7 +8,7 @@ public class Player {
 	private Color color;
 	private int tokenCount;
 	private int placeableTokenCount;
-	private final int maxToken = 9;
+	private final static int maxToken = 9;
 	
 	public Player(String name, Color color){
 		this.name = name;
