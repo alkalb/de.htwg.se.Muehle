@@ -9,29 +9,28 @@ import org.junit.Test;
 
 public class BoardTest {
 
- Board b;
- Token t1;
- Position pos;
- Player p1;
+	Board b;
+	Token t1;
+	Position pos;
+	Player p1;
 
- @Before
- public void setUp(){
- b = new Board();
- p1 = new Player("Gustav", Color.BLACK);
- pos = new Position(111);
- t1 = new Token(p1, pos, "ready");
- }
+	@Before
+	public void setUp(){
+		b = new Board();
+		p1 = new Player("Gustav", Color.BLACK);
+		pos = new Position(111);
+		t1 = new Token(p1, pos, "ready");
+	}
 
- @Test
- public void testIsPositionEmpty(){
- assertSame(true, b.isPositionEmpty(1));
- }
+	@Test
+	public void testIsPositionEmpty(){
+		assertSame(true, b.isPositionEmpty(1));
+	}
 
- @Test
- public void testSetPosition(){
- assertSame(true, b.isPositionEmpty(1));
- b.setPosition(1, t1);
- assertSame(false, b.isPositionEmpty(1));
- }
-
+	@Test
+	public void testSetPosition(){
+		assertSame(true, b.isPositionEmpty(1));
+		b.setPosition(1, t1);
+		assertSame(false, b.isPositionEmpty(1));
+	}
 }

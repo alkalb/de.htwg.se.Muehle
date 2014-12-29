@@ -6,29 +6,29 @@ import java.util.Map;
 
 public class Board {
 
- private static final int TOKENCOUNT = 24;
- private Token board[];
- private Map<Integer, ArrayList<Integer>> connections;
+	private static final int TOKENCOUNT = 24;
+	private Token board[];
+	private Map<Integer, ArrayList<Integer>> connections;
 
- public Board(){
- board = new Token[TOKENCOUNT];
- /*for(int i = 0; i < board.length; i++){
-	board[i] = new Token(null, null, null);
-	}*/
+	public Board(){
+		board = new Token[TOKENCOUNT];
+		/*for(int i = 0; i < board.length; i++){
+		board[i] = new Token(null, null, null);
+		}*/
 
- connections = new HashMap<Integer, ArrayList<Integer>>();
- /*for(int i = 0; i < 24; i++){
+		connections = new HashMap<Integer, ArrayList<Integer>>();
+		/*for(int i = 0; i < 24; i++){
 	
-	}*/
- }
+		}*/
+	}
 
- public boolean isPositionEmpty(int x){
+	public boolean isPositionEmpty(int x){
 
- return (board[x] == null);
+		return (board[x] == null);
 
- }
+	}
 
- public void setPosition(int x, Token t){
- board[x] = t;
- }
+	public void setPosition(int x, Token t){
+		board[x] = t;
+	}
 }

@@ -7,15 +7,15 @@ import org.junit.Test;
 
 public class PositionTest {
 
- Position p;
+	Position p;
 
- @Before
- public void setUp(){
- p = new Position(123);
- }
+	@Before
+	public void setUp(){
+		p = new Position(123);
+	}
 
- @Test
- public void testGetPosition(){
- assertSame(123, p.getPosition());
- }
+	@Test
+	public void testGetPosition(){
+		assertSame(123, p.getPosition());
+	}
 }
