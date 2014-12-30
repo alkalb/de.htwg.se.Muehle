@@ -7,30 +7,21 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BoardTest {
+public class FieldTest {
 
-	Board b;
+	Player p1;
 	Field f1;
 	int index;
-	Player p1;
 
 	@Before
 	public void setUp(){
-		b = new Board();
 		p1 = new Player("Gustav", Color.BLACK);
 		index = 1;
 		f1 = new Field(p1, index);
 	}
 
 	@Test
-	public void testIsPositionEmpty(){
-		assertSame(true, b.isPositionEmpty(1));
-	}
-
-	@Test
-	public void testSetPosition(){
-		assertSame(true, b.isPositionEmpty(1));
-		b.setPosition(1, f1);
-		assertSame(false, b.isPositionEmpty(1));
+	public void testGetPlayerOfToken(){
+		assertSame(p1, f1.getPlayerOfField());
 	}
 }

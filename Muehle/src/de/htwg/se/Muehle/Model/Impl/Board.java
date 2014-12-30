@@ -1,20 +1,19 @@
 package de.htwg.se.Muehle.Model.Impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Board {
 
-	private static final int TOKENCOUNT = 24;
-	private Token board[];
+	private static final int FIELDCOUNT = 24;
+	private Field fields[];
 	private Map<Integer, int[]> connections;
 
 	public Board(){
-		board = new Token[TOKENCOUNT];
-		/*for(int i = 0; i < board.length; i++){
-		board[i] = new Token(null, null, null);
-		}*/
+		fields = new Field[FIELDCOUNT];
+		for(int i = 0; i < fields.length; i++){
+			fields[i] = new Field(null, i);
+		}
 
 		connections = new HashMap<Integer, int[]>();
 		connections.put(0, new int[]{7,1,-1,-1});
@@ -46,11 +45,40 @@ public class Board {
 
 	public boolean isPositionEmpty(int x){
 
-		return (board[x] == null);
+		return (fields[x] == null);
 
 	}
 
-	public void setPosition(int x, Token t){
-		board[x] = t;
+	public Field[] getFields(){
+		return fields;
 	}
+	
+	public void setPosition(int x, Player p){
+		Field f = new Field(p, x);
+		fields[x] = f;
+		
+	}
+	
+	public Map<Integer, int[]> getConnections(){
+		return connections;
+	}
+	
+	
+	public void printBoard(){
+		System.out.println("6----------5---------4");
+		System.out.println("|          |         |");
+		System.out.println("|  14-----13-----12  |");
+		System.out.println("|  |       |      |  |");
+		System.out.println("|  |  22---21--20 |  |");
+		System.out.println("|  |   |       |  |  |");
+		System.out.println("7--15--23      19-11-3");
+		System.out.println("|  |   |       |  |  |");
+		System.out.println("|  |  16---17--18 |  |");
+		System.out.println("|  |       |      |  |");
+		System.out.println("|  8-------9------10 |");
+		System.out.println("|          |         |");
+		System.out.println("0----------1---------2");
+		
+	}
+	
 }
