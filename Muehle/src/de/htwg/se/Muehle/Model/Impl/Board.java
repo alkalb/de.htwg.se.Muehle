@@ -65,20 +65,24 @@ public class Board {
 	
 	
 	public void printBoard(){
-		System.out.println("6----------5---------4");
-		System.out.println("|          |         |");
-		System.out.println("|  14-----13-----12  |");
-		System.out.println("|  |       |      |  |");
-		System.out.println("|  |  22---21--20 |  |");
-		System.out.println("|  |   |       |  |  |");
-		System.out.println("7--15--23      19-11-3");
-		System.out.println("|  |   |       |  |  |");
-		System.out.println("|  |  16---17--18 |  |");
-		System.out.println("|  |       |      |  |");
-		System.out.println("|  8-------9------10 |");
-		System.out.println("|          |         |");
-		System.out.println("0----------1---------2");
+		print("6----------5---------4");
+		print("|          |         |");
+		print("|  14-----13-----12  |");
+		print("|  |       |      |  |");
+		print("|  |  22---21--20 |  |");
+		print("|  |   |       |  |  |");
+		print("7--15--23      19-11-3");
+		print("|  |   |       |  |  |");
+		print("|  |  16---17--18 |  |");
+		print("|  |       |      |  |");
+		print("|  8-------9------10 |");
+		print("|          |         |");
+		print("0----------1---------2");
 		
+	}
+	
+	private void print(String s){
+		System.out.println(s);
 	}
 	
 }

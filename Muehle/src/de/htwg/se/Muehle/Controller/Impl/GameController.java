@@ -7,17 +7,15 @@ import de.htwg.se.Muehle.Model.Impl.Field;
 import de.htwg.se.Muehle.Model.Impl.Player;
 
 public class GameController {
-	Player p1, p2, currPlayer, oppPlayer;
-	Board board;
-	Map<Integer, int[]> connections;
+	private Player currPlayer, oppPlayer;
+	private Board board;
+	private Map<Integer, int[]> connections;
 	private static final int TOP = 0;
 	private static final int RIGHT = 1;
 	private static final int BOTTOM = 2;
 	private static final int LEFT = 3;
 	
 	public GameController(Player p1, Player p2) {
-		this.p1 = p1;
-		this.p2 = p2;
 		this.currPlayer = p1;
 		this.oppPlayer = p2;
 		this.board = new Board();
@@ -91,10 +89,8 @@ public class GameController {
 		Field[] fields = board.getFields();
 		int temp[] = connections.get(x);
 		for(int i= 0; i<=3; i++){
-			if(temp[i] != -1){
-				if(fields[temp[i]].getPlayerOfField().equals(p) && fields[connections.get(temp[i])[i]].getPlayerOfField().equals(p)){
-					return true;
-				}
+			if(temp[i] != -1 && fields[temp[i]].getPlayerOfField().equals(p) && fields[connections.get(temp[i])[i]].getPlayerOfField().equals(p)){
+				return true;
 			}
 		}
 		return false;
@@ -161,10 +157,8 @@ public class GameController {
 	
 	public boolean isStealAllowed(){
 		for(Field f : board.getFields()){
-			if(f.getPlayerOfField().equals(oppPlayer)){
-				if (isStealAllowed(f.getFieldIndex())){
-					return true;
-				}
+			if(f.getPlayerOfField().equals(oppPlayer) && isStealAllowed(f.getFieldIndex())){
+				return true;
 			}
 		}
 		return false;
