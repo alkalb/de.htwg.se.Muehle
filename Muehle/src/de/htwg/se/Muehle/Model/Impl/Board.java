@@ -5,6 +5,31 @@ import java.util.Map;
 
 public class Board {
 
+	private static final int NOCONNECTION = -1;
+	private static final int FIELDZERO = 0;
+	private static final int FIELDONE = 1;
+	private static final int FIELDTWO = 2;
+	private static final int FIELDTHREE = 3;
+	private static final int FIELDFOUR = 4;
+	private static final int FIELDFIVE = 5;
+	private static final int FIELDSIX = 6;
+	private static final int FIELDSEVEN = 7;
+	private static final int FIELDEIGHT = 8;
+	private static final int FIELDNINE = 9;
+	private static final int FIELDTEN = 10;
+	private static final int FIELDELEVEN = 11;
+	private static final int FIELDTWELVE = 12;
+	private static final int FIELDTHIRTEEN = 13;
+	private static final int FIELDFOURTEEN = 14;
+	private static final int FIELDFIFTEEN = 15;
+	private static final int FIELDSIXTEEN = 16;
+	private static final int FIELDSEVENTEEN = 17;
+	private static final int FIELDEIGHTTEEN = 18;
+	private static final int FIELDNINETEEN = 19;
+	private static final int FIELDTWENTY = 20;
+	private static final int FIELDTWENTYONE = 21;
+	private static final int FIELDTWENTYTWO = 22;
+	private static final int FIELDTWENTYTHREE = 23;
 	private static final int FIELDCOUNT = 24;
 	private Field fields[];
 	private Map<Integer, int[]> connections;
@@ -16,30 +41,30 @@ public class Board {
 		}
 
 		connections = new HashMap<Integer, int[]>();
-		connections.put(0, new int[]{7,1,-1,-1});
-		connections.put(1, new int[]{9,2,-1,0});
-		connections.put(2, new int[]{3,-1,-1,1});
-		connections.put(3, new int[]{4,-1,2,11});
-		connections.put(4, new int[]{-1,-1,3,5});
-		connections.put(5, new int[]{-1,4,13,6});
-		connections.put(6, new int[]{-1,5,7,-1});
-		connections.put(7, new int[]{6,15,0,-1});
-		connections.put(8, new int[]{15,9,-1,-1});
-		connections.put(9, new int[]{17,10,1,8});
-		connections.put(10, new int[]{11,-1,-1,9});
-		connections.put(11, new int[]{12,3,10,19});
-		connections.put(12, new int[]{-1,-1,11,13});
-		connections.put(13, new int[]{5,12,21,14});
-		connections.put(14, new int[]{-1,13,15,-1});
-		connections.put(15, new int[]{14,23,8,7});
-		connections.put(16, new int[]{23,17,-1,-1});
-		connections.put(17, new int[]{-1,18,9,16});
-		connections.put(18, new int[]{19,-1,-1,17});
-		connections.put(19, new int[]{20,11,18,-1});
-		connections.put(20, new int[]{-1,-1,19,21});
-		connections.put(21, new int[]{13,20,-1,22});
-		connections.put(22, new int[]{-1,21,23,-1});
-		connections.put(23, new int[]{22,-1,16,15});
+		connections.put(FIELDZERO, new int[]{FIELDSEVEN, FIELDONE, NOCONNECTION, NOCONNECTION});
+		connections.put(FIELDONE, new int[]{FIELDNINE, FIELDTWO, NOCONNECTION, FIELDZERO});
+		connections.put(FIELDTWO, new int[]{FIELDTHREE, NOCONNECTION, NOCONNECTION, FIELDONE});
+		connections.put(FIELDTHREE, new int[]{FIELDFOUR, NOCONNECTION, FIELDTWO, FIELDELEVEN});
+		connections.put(FIELDFOUR, new int[]{NOCONNECTION, NOCONNECTION, FIELDTHREE, FIELDFIVE});
+		connections.put(FIELDFIVE, new int[]{NOCONNECTION, FIELDFOUR, FIELDTHIRTEEN, FIELDSIX});
+		connections.put(FIELDSIX, new int[]{NOCONNECTION, FIELDFIVE, FIELDSEVEN, NOCONNECTION});
+		connections.put(FIELDSEVEN, new int[]{FIELDSIX, FIELDFIFTEEN, FIELDZERO, NOCONNECTION});
+		connections.put(FIELDEIGHT, new int[]{FIELDFIFTEEN, FIELDNINE, NOCONNECTION, NOCONNECTION});
+		connections.put(FIELDNINE, new int[]{FIELDSEVENTEEN, FIELDTEN, FIELDONE, FIELDEIGHT});
+		connections.put(FIELDTEN, new int[]{FIELDELEVEN, NOCONNECTION, NOCONNECTION, FIELDNINE});
+		connections.put(FIELDELEVEN, new int[]{FIELDTWELVE, FIELDTHREE, FIELDTEN, FIELDNINETEEN});
+		connections.put(FIELDTWELVE, new int[]{NOCONNECTION, NOCONNECTION, FIELDELEVEN, FIELDTHIRTEEN});
+		connections.put(FIELDTHIRTEEN, new int[]{FIELDFIVE, FIELDTWELVE, FIELDTWENTYONE, FIELDFOURTEEN});
+		connections.put(FIELDFOURTEEN, new int[]{NOCONNECTION, FIELDTHIRTEEN, FIELDFIFTEEN, NOCONNECTION});
+		connections.put(FIELDFIFTEEN, new int[]{FIELDFOURTEEN, FIELDTWENTYTHREE, FIELDEIGHT, FIELDSEVEN});
+		connections.put(FIELDSIXTEEN, new int[]{FIELDTWENTYTHREE, FIELDSEVENTEEN, NOCONNECTION, NOCONNECTION});
+		connections.put(FIELDSEVENTEEN, new int[]{NOCONNECTION, FIELDEIGHTTEEN, FIELDNINE, FIELDSIXTEEN});
+		connections.put(FIELDEIGHTTEEN, new int[]{FIELDNINETEEN, NOCONNECTION, NOCONNECTION, FIELDSEVENTEEN});
+		connections.put(FIELDNINETEEN, new int[]{FIELDTWENTY, FIELDELEVEN, FIELDEIGHTTEEN, NOCONNECTION});
+		connections.put(FIELDTWENTY, new int[]{NOCONNECTION, NOCONNECTION, FIELDNINETEEN, FIELDTWENTYONE});
+		connections.put(FIELDTWENTYONE, new int[]{FIELDTHIRTEEN, FIELDTWENTY, NOCONNECTION, FIELDTWENTYTWO});
+		connections.put(FIELDTWENTYTWO, new int[]{NOCONNECTION, FIELDTWENTYONE, FIELDTWENTYTHREE, NOCONNECTION});
+		connections.put(FIELDTWENTYTHREE, new int[]{FIELDTWENTYTWO, NOCONNECTION, FIELDSIXTEEN, FIELDFIFTEEN});
 		
 	}
 
