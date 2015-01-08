@@ -2,13 +2,16 @@ package de.htwg.se.Muehle.Controller.Impl;
 
 import java.util.Map;
 
+import de.htwg.se.Muehle.Model.IBoard;
+import de.htwg.se.Muehle.Model.IField;
+import de.htwg.se.Muehle.Model.IPlayer;
 import de.htwg.se.Muehle.Model.Impl.Board;
 import de.htwg.se.Muehle.Model.Impl.Field;
 import de.htwg.se.Muehle.Model.Impl.Player;
 
 public class GameController {
-	private Player currPlayer, oppPlayer;
-	private Board board;
+	private IPlayer currPlayer, oppPlayer;
+	private IBoard board;
 	private Map<Integer, int[]> connections;
 	private static final int TOP = 0;
 	private static final int RIGHT = 1;
@@ -18,7 +21,7 @@ public class GameController {
 	private static final int TOKENAMOUNTFORJUMP = 3;
 	private static final int STEALABLECHECK = 3;
 	
-	public GameController(Player p1, Player p2) {
+	public GameController(IPlayer p1, IPlayer p2) {
 		this.currPlayer = p1;
 		this.oppPlayer = p2;
 		this.board = new Board();
@@ -26,13 +29,13 @@ public class GameController {
 	}
 	
 	private void nextPlayer(){
-		Player temp = currPlayer;
+		IPlayer temp = currPlayer;
 		currPlayer = oppPlayer;
 		oppPlayer = temp;
 	}
 	
 	
-	public boolean isMill(int x, Player p){
+	public boolean isMill(int x, IPlayer p){
 		if(x % 2 == 0){
 			return checkCorner(x, p);
 		} else {
@@ -42,12 +45,12 @@ public class GameController {
 	
 	
 	
-	private boolean checkBetween(int x, Player p){
+	private boolean checkBetween(int x, IPlayer p){
 		return checkVertical(x, p) || checkHorizontal(x, p);
 	}
 	
-	private boolean checkVertical(int x, Player p){
-		Field[] fields = board.getFields();
+	private boolean checkVertical(int x, IPlayer p){
+		IField[] fields = board.getFields();
 		int temp[] = connections.get(x);
 		if(temp[TOP] == -1){
 			if(fields[temp[BOTTOM]].getPlayerOfField().equals(p) && fields[connections.get(temp[BOTTOM])[BOTTOM]].getPlayerOfField().equals(p)){
@@ -66,8 +69,8 @@ public class GameController {
 		return false;
 	}
 	
-	private boolean checkHorizontal(int x, Player p){
-		Field[] fields = board.getFields();
+	private boolean checkHorizontal(int x, IPlayer p){
+		IField[] fields = board.getFields();
 		int temp[] = connections.get(x);
 		if(temp[RIGHT] == -1){
 			if(fields[temp[LEFT]].getPlayerOfField().equals(p) && fields[connections.get(temp[LEFT])[LEFT]].getPlayerOfField().equals(p)){
@@ -87,9 +90,9 @@ public class GameController {
 	}
 	
 	
-	private boolean checkCorner(int x, Player p){
+	private boolean checkCorner(int x, IPlayer p){
 		
-		Field[] fields = board.getFields();
+		IField[] fields = board.getFields();
 		int temp[] = connections.get(x);
 		for(int i= 0; i<=CORNERCHECK; i++){
 			if(temp[i] != -1 && fields[temp[i]].getPlayerOfField().equals(p) && fields[connections.get(temp[i])[i]].getPlayerOfField().equals(p)){
@@ -105,8 +108,8 @@ public class GameController {
 			return true;
 		}
 		
-		Field[] fields = board.getFields();
-		for(Field f : fields){
+		IField[] fields = board.getFields();
+		for(IField f : fields){
 			if(f.getPlayerOfField().equals(currPlayer)){
 				int temp[] = connections.get(f.getFieldIndex());
 				for(int i : temp){
@@ -120,7 +123,7 @@ public class GameController {
 	}
 	
 	public boolean isMoveAllowed(int x, int y){
-		Field[] fields = board.getFields();
+		IField[] fields = board.getFields();
 		if(!fields[x].getPlayerOfField().equals(currPlayer)){
 			return false;
 		}
@@ -159,7 +162,7 @@ public class GameController {
 	}
 	
 	public boolean isStealAllowed(){
-		for(Field f : board.getFields()){
+		for(IField f : board.getFields()){
 			if(f.getPlayerOfField().equals(oppPlayer) && isStealAllowed(f.getFieldIndex())){
 				return true;
 			}
@@ -168,7 +171,7 @@ public class GameController {
 	}
 	
 	public boolean isStealAllowed(int x){
-		Field[] fields = board.getFields();
+		IField[] fields = board.getFields();
 		if(fields[x].getPlayerOfField().equals(oppPlayer)){
 			return isTokenStealable(x);
 		}
@@ -212,5 +215,11 @@ public class GameController {
 		}
 		return false;
 	}
+	
+	public IBoard getBoard(){
+		return board;
+	}
+	
+	
 	
 }
