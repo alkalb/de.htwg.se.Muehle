@@ -37,7 +37,7 @@ public class FieldTest {
 	
 	@Test
 	public void testGetFieldColor(){
-		assertEquals("\u25CB", f2.getFieldColor());
+		assertEquals("W", f2.getFieldColor());
 		assertSame(" ", f4.getFieldColor());
 		
 	}

@@ -27,7 +27,8 @@ public class PlayerTest {
 	
 	@Test
 	public void testGetColor(){
-		assertSame("\u25CB", p1.getColor());
+		assertSame("W", p1.getColor());
+		assertNotSame("W", p2.getColor());
 	}
 	
 	@Test
