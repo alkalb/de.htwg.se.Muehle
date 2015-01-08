@@ -3,7 +3,11 @@ package de.htwg.se.Muehle.Model.Impl;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Board {
+import de.htwg.se.Muehle.Model.IBoard;
+import de.htwg.se.Muehle.Model.IField;
+import de.htwg.se.Muehle.Model.IPlayer;
+
+public class Board implements IBoard{
 
 	private static final int NOCONNECTION = -1;
 	private static final int FIELDZERO = 0;
@@ -31,7 +35,7 @@ public class Board {
 	private static final int FIELDTWENTYTWO = 22;
 	private static final int FIELDTWENTYTHREE = 23;
 	private static final int FIELDCOUNT = 24;
-	private Field fields[];
+	private IField fields[];
 	private Map<Integer, int[]> connections;
 
 	public Board(){
@@ -74,12 +78,12 @@ public class Board {
 
 	}
 
-	public Field[] getFields(){
+	public IField[] getFields(){
 		return fields;
 	}
 	
-	public void setPosition(int x, Player p){
-		Field f = new Field(p, x);
+	public void setPosition(int x, IPlayer p){
+		IField f = new Field(p, x);
 		fields[x] = f;
 		
 	}

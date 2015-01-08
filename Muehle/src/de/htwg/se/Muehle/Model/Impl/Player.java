@@ -3,7 +3,9 @@ package de.htwg.se.Muehle.Model.Impl;
 
 import java.awt.Color;
 
-public class Player {
+import de.htwg.se.Muehle.Model.IPlayer;
+
+public class Player implements IPlayer{
 	private String name;
 	private Color color;
 	private int tokenCount;
@@ -47,7 +49,7 @@ public class Player {
 		
 		
 		if(o instanceof Player){
-			Player temp = (Player) o;
+			IPlayer temp = (Player) o;
 			
 			if(this.getColor().equals(temp.getColor())){
 				return true;

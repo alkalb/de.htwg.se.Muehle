@@ -1,22 +1,25 @@
 package de.htwg.se.Muehle.Model.Impl;
 
-public class Field {
-	private Player playerOfField;
+import de.htwg.se.Muehle.Model.IField;
+import de.htwg.se.Muehle.Model.IPlayer;
+
+public class Field implements IField{
+	private IPlayer playerOfField;
 	private int fieldIndex;
 
-	public Field(Player pof, int index){
+	public Field(IPlayer pof, int index){
 		this.playerOfField = pof;
 		this.fieldIndex = index;
 	}
 
-	public Player getPlayerOfField(){
+	public IPlayer getPlayerOfField(){
 		return playerOfField;
 	}
 
 	public int getFieldIndex(){
 		return fieldIndex;
 	}
-	public void setPlayerOfField(Player p){
+	public void setPlayerOfField(IPlayer p){
 		playerOfField = p;
 	}
 
@@ -24,9 +27,9 @@ public class Field {
 	@Override
 	public boolean equals(Object o) {
 		if(o instanceof Field){
-			Field temp = (Field) o;
-			Player p1 = this.getPlayerOfField();
-			Player p2 = temp.getPlayerOfField();
+			IField temp = (Field) o;
+			IPlayer p1 = this.getPlayerOfField();
+			IPlayer p2 = temp.getPlayerOfField();
 			
 			
 			if(temp.getFieldIndex() == this.getFieldIndex() && (p1 == p2 || p1.equals(p2))){
