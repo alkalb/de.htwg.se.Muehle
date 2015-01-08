@@ -10,10 +10,14 @@ import org.junit.Test;
 public class PlayerTest {
 	
 	Player p1;
+	Player p1Clone;
+	Player p2;
 	
 	@Before
 	public void setUp() throws Exception{
 		p1 = new Player("Hans", Color.WHITE);
+		p1Clone = new Player("Hans", Color.WHITE);
+		p2 = new Player("Guenther", Color.MAGENTA);
 	}
 	
 	@Test
@@ -48,6 +52,12 @@ public class PlayerTest {
 		assertSame(9, p1.getPlaceableTokenCount());
 		p1.setPlaceableTokenCount(p1.getPlaceableTokenCount() - 1);
 		assertSame(8, p1.getPlaceableTokenCount());
+	}
+	
+	@Test
+	public void testEquals(){
+		assertTrue(p1.equals(p1Clone));
+		assertFalse(p1.equals(p2));
 	}
 
 }

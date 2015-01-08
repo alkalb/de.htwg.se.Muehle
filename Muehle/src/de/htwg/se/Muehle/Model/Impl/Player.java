@@ -40,4 +40,19 @@ public class Player {
 	public void setPlaceableTokenCount(int x){
 		placeableTokenCount = x;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+
+		
+		
+		if(o instanceof Player){
+			Player temp = (Player) o;
+			
+			if(this.getColor().equals(temp.getColor())){
+				return true;
+			}
+		}
+		return false;
+	}
 }

@@ -49,29 +49,18 @@ public class BoardTest {
 	
 	@Test
 	public void testGetFields(){
+
+		fields[1].setPlayerOfField(p1);
+		b.setPosition(1, p1);
 	
-		assertSame(fields, b.getFields());
+		assertArrayEquals(fields, b.getFields());
 	}
 	
 	
 	@Test
 	public void testGetConnections(){
-		assertEquals(connectionsAtFive, b.getConnections().get(4));
+		assertArrayEquals(connectionsAtFive, b.getConnections().get(5));
 	}
 	
-	@Test
-	public void testPrint(){
-		
-	}
-	
-	@Test
-	public void testPrintBoard(){
-		
-	}
 
-	
-	
-	
-	
-	
 }

@@ -20,9 +20,24 @@ public class Field {
 		playerOfField = p;
 	}
 
-	/*
-	public void setFieldIndex(int i){
-		fieldIndex = i;
-	}*/
+
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Field){
+			Field temp = (Field) o;
+			Player p1 = this.getPlayerOfField();
+			Player p2 = temp.getPlayerOfField();
+			
+			
+			if(temp.getFieldIndex() == this.getFieldIndex()){
+				if(p1 == p2 || p1.equals(p2)){
+					return true;
+				}
+				
+			}
+		}
+		return false;
+	}
+	
 	
 }
