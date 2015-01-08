@@ -13,13 +13,24 @@ public class BoardTest {
 	Field f1;
 	int index;
 	Player p1;
-
+	Field fields[];
+	final int FIELDCOUNT = 24;
+	int[] connectionsAtFive;
+	
 	@Before
 	public void setUp(){
 		b = new Board();
 		p1 = new Player("Gustav", Color.BLACK);
 		index = 1;
 		f1 = new Field(p1, index);
+		
+		fields = new Field[FIELDCOUNT];
+		for(int i = 0; i < fields.length; i++){
+			fields[i] = new Field(null, i);
+		}
+		fields[1].setPlayerOfField(p1);
+		connectionsAtFive = new int[]{-1,4,13,6};
+		
 	}
 
 	@Test
@@ -27,9 +38,7 @@ public class BoardTest {
 		assertSame(true, b.isPositionEmpty(1));
 	}
 	
-	public void testGetFields(){
-		
-	}
+	
 
 	@Test
 	public void testSetPosition(){
@@ -37,6 +46,29 @@ public class BoardTest {
 		b.setPosition(1, p1);
 		assertSame(false, b.isPositionEmpty(1));
 	}
+	
+	@Test
+	public void testGetFields(){
+	
+		assertSame(fields, b.getFields());
+	}
+	
+	
+	@Test
+	public void testGetConnections(){
+		assertEquals(connectionsAtFive, b.getConnections().get(4));
+	}
+	
+	@Test
+	public void testPrint(){
+		
+	}
+	
+	@Test
+	public void testPrintBoard(){
+		
+	}
+
 	
 	
 	
