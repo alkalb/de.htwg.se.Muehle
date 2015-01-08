@@ -26,11 +26,20 @@ public class BoardTest {
 	public void testIsPositionEmpty(){
 		assertSame(true, b.isPositionEmpty(1));
 	}
+	
+	public void testGetFields(){
+		
+	}
 
 	@Test
 	public void testSetPosition(){
 		assertSame(true, b.isPositionEmpty(1));
-		b.setPosition(1, f1);
+		b.setPosition(1, p1);
 		assertSame(false, b.isPositionEmpty(1));
 	}
+	
+	
+	
+	
+	
 }

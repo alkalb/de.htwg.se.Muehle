@@ -1,27 +1,28 @@
 package de.htwg.se.Muehle.Model.Impl;
 
 public class Field {
-	private Player playerOfToken;
+	private Player playerOfField;
 	private int fieldIndex;
 
-	public Field(Player playerOfToken, int index){
-		this.playerOfToken = playerOfToken;
+	public Field(Player pof, int index){
+		this.playerOfField = pof;
 		this.fieldIndex = index;
 	}
 
 	public Player getPlayerOfField(){
-		return playerOfToken;
+		return playerOfField;
 	}
 
 	public int getFieldIndex(){
 		return fieldIndex;
 	}
 	public void setPlayerOfField(Player p){
-		playerOfToken = p;
+		playerOfField = p;
 	}
 
+	/*
 	public void setFieldIndex(int i){
 		fieldIndex = i;
-	}
+	}*/
 	
 }

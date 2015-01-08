@@ -45,7 +45,7 @@ public class Board {
 
 	public boolean isPositionEmpty(int x){
 
-		return (fields[x] == null);
+		return (fields[x].getPlayerOfField().equals(null));
 
 	}
 
