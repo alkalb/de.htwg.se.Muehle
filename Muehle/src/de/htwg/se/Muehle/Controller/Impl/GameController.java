@@ -2,11 +2,14 @@ package de.htwg.se.Muehle.Controller.Impl;
 
 import java.util.Map;
 
+import de.htwg.se.Muehle.Controller.IGameController;
 import de.htwg.se.Muehle.Model.IBoard;
 import de.htwg.se.Muehle.Model.IField;
 import de.htwg.se.Muehle.Model.IPlayer;
 import de.htwg.se.Muehle.Model.Impl.Board;
-public class GameController {
+
+
+public class GameController implements IGameController {
 	private IPlayer currPlayer, oppPlayer;
 	private IBoard board;
 	private Map<Integer, int[]> connections;

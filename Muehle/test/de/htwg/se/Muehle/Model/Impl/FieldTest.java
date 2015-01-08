@@ -27,11 +27,19 @@ public class FieldTest {
 		p2 = new Player("Hans", Color.WHITE);
 		f2 = new Field(p2, index);
 		f3 = new Field(p1, 0);
+		f4 = new Field(null, 5);
 	}
 
 	@Test
 	public void testGetPlayerOfField(){
 		assertSame(p1, f1.getPlayerOfField());
+	}
+	
+	@Test
+	public void testGetFieldColor(){
+		assertEquals("\u25CB", f2.getFieldColor());
+		assertSame(" ", f4.getFieldColor());
+		
 	}
 	
 	@Test

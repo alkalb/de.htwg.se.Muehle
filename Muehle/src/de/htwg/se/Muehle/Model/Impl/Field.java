@@ -16,6 +16,14 @@ public class Field implements IField{
 		return playerOfField;
 	}
 
+	public String getFieldColor(){
+		if(this.playerOfField == null){
+			return " ";
+		} else {
+			return playerOfField.getColor();
+		}
+	}
+	
 	public int getFieldIndex(){
 		return fieldIndex;
 	}

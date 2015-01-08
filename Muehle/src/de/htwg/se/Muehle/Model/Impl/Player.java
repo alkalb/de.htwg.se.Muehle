@@ -23,8 +23,12 @@ public class Player implements IPlayer{
 		return name;
 	}
 	
-	public Color getColor(){
-		return color;
+	public String getColor(){
+		if(color.equals(Color.BLACK)){
+			return "B";
+		} else {
+			return "W";
+		}
 	}
 	
 	public int getTokenCount(){

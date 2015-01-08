@@ -17,7 +17,7 @@ public class PlayerTest {
 	public void setUp() throws Exception{
 		p1 = new Player("Hans", Color.WHITE);
 		p1Clone = new Player("Hans", Color.WHITE);
-		p2 = new Player("Guenther", Color.MAGENTA);
+		p2 = new Player("Guenther", Color.BLACK);
 	}
 	
 	@Test
@@ -27,7 +27,7 @@ public class PlayerTest {
 	
 	@Test
 	public void testGetColor(){
-		assertSame(Color.WHITE, p1.getColor());
+		assertSame("\u25CB", p1.getColor());
 	}
 	
 	@Test

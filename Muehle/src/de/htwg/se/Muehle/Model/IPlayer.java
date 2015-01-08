@@ -6,7 +6,7 @@ public interface IPlayer {
 	
 	String getName();
 	
-	Color getColor();
+	String getColor();
 	
 	int getTokenCount();
 	
