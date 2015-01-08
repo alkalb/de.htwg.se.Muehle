@@ -14,6 +14,9 @@ public class GameController {
 	private static final int RIGHT = 1;
 	private static final int BOTTOM = 2;
 	private static final int LEFT = 3;
+	private static final int CORNERCHECK = 3;
+	private static final int TOKENAMOUNTFORJUMP = 3;
+	private static final int STEALABLECHECK = 3;
 	
 	public GameController(Player p1, Player p2) {
 		this.currPlayer = p1;
@@ -88,7 +91,7 @@ public class GameController {
 		
 		Field[] fields = board.getFields();
 		int temp[] = connections.get(x);
-		for(int i= 0; i<=3; i++){
+		for(int i= 0; i<=CORNERCHECK; i++){
 			if(temp[i] != -1 && fields[temp[i]].getPlayerOfField().equals(p) && fields[connections.get(temp[i])[i]].getPlayerOfField().equals(p)){
 				return true;
 			}
@@ -98,7 +101,7 @@ public class GameController {
 
 	
 	public boolean isMoveAllowed(){
-		if(currPlayer.getTokenCount() == 3){
+		if(currPlayer.getTokenCount() == TOKENAMOUNTFORJUMP){
 			return true;
 		}
 		
@@ -134,7 +137,7 @@ public class GameController {
 	}
 	
 	private boolean isJumpAllowed(int x, int y){
-		if(currPlayer.getTokenCount() == 3){
+		if(currPlayer.getTokenCount() == TOKENAMOUNTFORJUMP){
 			return true;
 		}
 		
@@ -173,7 +176,7 @@ public class GameController {
 	}
 
 	private boolean isTokenStealable(int x) {
-		if(isMill(x, oppPlayer) && (oppPlayer.getTokenCount() > 3 || oppPlayer.getTokenCount() == 3 && oppPlayer.getPlaceableTokenCount() > 0)){
+		if(isMill(x, oppPlayer) && (oppPlayer.getTokenCount() > STEALABLECHECK || oppPlayer.getTokenCount() == STEALABLECHECK && oppPlayer.getPlaceableTokenCount() > 0)){
 			return false;
 		}
 		return true;
