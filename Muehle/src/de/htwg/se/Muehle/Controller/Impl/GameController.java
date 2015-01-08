@@ -6,9 +6,6 @@ import de.htwg.se.Muehle.Model.IBoard;
 import de.htwg.se.Muehle.Model.IField;
 import de.htwg.se.Muehle.Model.IPlayer;
 import de.htwg.se.Muehle.Model.Impl.Board;
-import de.htwg.se.Muehle.Model.Impl.Field;
-import de.htwg.se.Muehle.Model.Impl.Player;
-
 public class GameController {
 	private IPlayer currPlayer, oppPlayer;
 	private IBoard board;

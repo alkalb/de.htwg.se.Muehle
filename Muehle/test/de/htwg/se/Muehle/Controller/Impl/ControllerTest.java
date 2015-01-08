@@ -19,12 +19,19 @@ public class ControllerTest {
 	@Before
 	public void setUp(){
 		cont = new GameController(p1, p2);
-		
 	}
 
 	@Test
-	public void test() {
-		assertTrue(1 == 1);
+	public void Gametest() {
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }

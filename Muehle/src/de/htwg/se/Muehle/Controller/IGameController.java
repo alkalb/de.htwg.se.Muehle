@@ -5,21 +5,21 @@ import de.htwg.se.Muehle.Model.IPlayer;
 
 public interface IGameController {
 
-	public boolean isMill(int x, IPlayer p);
+    boolean isMill(int x, IPlayer p);
 
-	public boolean isMoveAllowed();
+	boolean isMoveAllowed();
 	
-	public boolean isMoveAllowed(int x, int y);
+	boolean isMoveAllowed(int x, int y);
 
-	public boolean isPlacementAllowed(int x);
-	public boolean isStealAllowed();
-	public boolean isStealAllowed(int x);
-	public boolean placeToken(int x);
-	public int stealToken(int x);
+	boolean isPlacementAllowed(int x);
+	boolean isStealAllowed();
+	boolean isStealAllowed(int x);
+	boolean placeToken(int x);
+	int stealToken(int x);
 	
-	public boolean moveToken(int x, int y);
+	boolean moveToken(int x, int y);
 	
-	public IBoard getBoard();
+	IBoard getBoard();
 	
 	
 }
