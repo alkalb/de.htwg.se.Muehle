@@ -29,11 +29,8 @@ public class Field {
 			Player p2 = temp.getPlayerOfField();
 			
 			
-			if(temp.getFieldIndex() == this.getFieldIndex()){
-				if(p1 == p2 || p1.equals(p2)){
+			if(temp.getFieldIndex() == this.getFieldIndex() && (p1 == p2 || p1.equals(p2))){
 					return true;
-				}
-				
 			}
 		}
 		return false;
