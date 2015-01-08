@@ -4,18 +4,18 @@ import java.awt.Color;
 
 public interface IPlayer {
 	
-	public String getName();
+	String getName();
 	
-	public Color getColor();
+	Color getColor();
 	
-	public int getTokenCount();
+	int getTokenCount();
 	
-	public int getPlaceableTokenCount();
+	int getPlaceableTokenCount();
 	
-	public void setTokenCount(int x);
+	void setTokenCount(int x);
 	
-	public void setPlaceableTokenCount(int x);
+	void setPlaceableTokenCount(int x);
 	
-	public boolean equals(Object o);
+	boolean equals(Object o);
 
 }

@@ -4,12 +4,12 @@ import java.util.Map;
 
 public interface IBoard {
 	
-	public boolean isPositionEmpty(int x);
+	boolean isPositionEmpty(int x);
 
-	public IField[] getFields();
+	IField[] getFields();
 	
-	public void setPosition(int x, IPlayer p);
+	void setPosition(int x, IPlayer p);
 	
-	public Map<Integer, int[]> getConnections();
+	Map<Integer, int[]> getConnections();
 
 }
