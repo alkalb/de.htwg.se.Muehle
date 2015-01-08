@@ -1,6 +1,5 @@
 package de.htwg.se.Muehle.Model;
 
-import java.awt.Color;
 
 public interface IPlayer {
 	

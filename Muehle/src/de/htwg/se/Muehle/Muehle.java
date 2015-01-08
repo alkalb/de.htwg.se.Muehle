@@ -10,6 +10,8 @@ import de.htwg.se.aUI.TextualUserInterface;
 
 public class Muehle {
 
+	private Muehle(){}
+	
 	public static void main(String[] args) {
 
 		IPlayer p1 = new Player("Alex", Color.BLACK);
