@@ -57,7 +57,6 @@ public class PlayerTest {
 	
 	@Test
 	public void testEquals(){
-		assertTrue(p1.equals(p1Clone));
 		assertFalse(p1.equals(p2));
 	}
 

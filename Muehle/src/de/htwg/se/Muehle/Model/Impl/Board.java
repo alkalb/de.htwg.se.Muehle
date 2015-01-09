@@ -1,5 +1,6 @@
 package de.htwg.se.Muehle.Model.Impl;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,11 +38,15 @@ public class Board implements IBoard{
 	private static final int FIELDCOUNT = 24;
 	private IField fields[];
 	private Map<Integer, int[]> connections;
-
+	private IPlayer error;
+	
 	public Board(){
+		error = new Player("error", Color.MAGENTA);
+		
+		
 		fields = new Field[FIELDCOUNT];
 		for(int i = 0; i < fields.length; i++){
-			fields[i] = new Field(null, i);
+			fields[i] = new Field(error, i);
 		}
 
 		connections = new HashMap<Integer, int[]>();
@@ -74,7 +79,7 @@ public class Board implements IBoard{
 
 	public boolean isPositionEmpty(int x){
 
-		return (fields[x].getPlayerOfField() == null);
+		return (fields[x].getPlayerOfField().getName().equals("error"));
 
 	}
 

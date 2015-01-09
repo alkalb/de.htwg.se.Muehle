@@ -47,7 +47,9 @@ public class Player implements IPlayer{
 		placeableTokenCount = x;
 	}
 	
-	@Override
+	
+	
+	/*@Override
 	public boolean equals(Object o) {
 
 		
@@ -55,10 +57,10 @@ public class Player implements IPlayer{
 		if(o instanceof Player){
 			IPlayer temp = (Player) o;
 			
-			if(this.getColor().equals(temp.getColor())){
+			if(this.getColor().toString().equals(temp.getColor().toString())){
 				return true;
 			}
 		}
 		return false;
-	}
+	}*/
 }

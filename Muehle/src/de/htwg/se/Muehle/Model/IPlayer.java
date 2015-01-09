@@ -15,6 +15,4 @@ public interface IPlayer {
 	
 	void setPlaceableTokenCount(int x);
 	
-	boolean equals(Object o);
-
 }

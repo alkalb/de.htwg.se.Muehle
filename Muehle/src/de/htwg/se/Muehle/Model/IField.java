@@ -10,6 +10,4 @@ public interface IField {
 	
 	void setPlayerOfField(IPlayer p);
 
-	boolean equals(Object o);
-
 }

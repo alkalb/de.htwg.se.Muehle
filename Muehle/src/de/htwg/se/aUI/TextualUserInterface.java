@@ -1,12 +1,15 @@
 package de.htwg.se.aUI;
 
 import de.htwg.se.Muehle.Controller.IGameController;
+import de.htwg.se.Muehle.Controller.ITurnController;
 import de.htwg.se.Muehle.Model.IBoard;
 import de.htwg.se.Muehle.Model.IField;
+import de.htwg.se.Muehle.Model.IPlayer;
 
 public class TextualUserInterface {
-	private IGameController gamCon;
 	private IBoard board;
+	private IPlayer curr, opp;
+	private ITurnController tuCon;
 	private static final int ZERO = 0;
 	private static final int ONE = 1;
 	private static final int TWO = 2;
@@ -33,9 +36,11 @@ public class TextualUserInterface {
 	private static final int TWENTYTHREE = 23;
 	private static final int SIZE = 24;
 	
-	public TextualUserInterface(IGameController gc){
-		gamCon = gc;
-		board = gamCon.getBoard();
+	public TextualUserInterface(IGameController gc, ITurnController tc){
+		curr = gc.getCurrPlayer();
+		opp = gc.getOppPlayer();
+		board = gc.getBoard();
+		tuCon = tc;
 	}
 	
 	
@@ -50,7 +55,8 @@ public class TextualUserInterface {
 	public void printHelp(){
 		print("/restart Restarts the game\n"
 				+ "/exit Exits the game\n"
-				+ "/help Shows this text\n");
+				+ "/help Shows this text\n"
+				+ "steal and place as single number, move as number/number");
 	}
 	
 
@@ -70,9 +76,9 @@ public class TextualUserInterface {
 		
 		System.out.printf("\n6----------5---------4 \t\t%s---------%s---------%s\n" +
 				  "|          |         | \t\t|         |         |\n" +
-				  "|  14-----13-----12  | \t\t|  %s------%s------%s  |\n" +
+				  "|  14-----13-----12  | \t\t|  %s------%s------%s  |			Platzierbare Tokens Spieler1: " + curr.getPlaceableTokenCount() + "\n" +
 				  "|  |       |      |  | \t\t|  |      |      |  |\n" +
-				  "|  |  22---21--20 |  | \t\t|  |  %s---%s---%s  |  |\n" +
+				  "|  |  22---21--20 |  | \t\t|  |  %s---%s---%s  |  |			Platzierbare Tokens Spieler2: " + opp.getPlaceableTokenCount() + "\n" +
 				  "|  |   |       |  |  | \t\t|  |  |       |  |  |\n" +
 				  "7--15--23      19-11-3 \t\t%s--%s--%s       %s--%s--%s\n" +
 				  "|  |   |       |  |  | \t\t|  |  |       |  |  |\n" +
@@ -90,8 +96,54 @@ public class TextualUserInterface {
 	
 	
 	private void print(String s){
-		System.out.printf(s);
+		System.out.println(s);
 	}
-	
 
+
+	public void sendInput(String next) {
+		String status = tuCon.getStatus();
+		
+		if(next.equals("/restart")){
+			System.exit(0);
+		} else if(next.equals("/help")){
+			printHelp();
+		} else if(next.equals("/exit")){
+			System.exit(0);
+		} else {
+		
+			switch(status){
+			case "place":
+				tuCon.place(next);
+				printGame();
+				print(tuCon.getMessage());
+				print(tuCon.nextInstruction());
+				break;
+				
+			case "move":
+
+				String[] temp = next.split("/");
+				if(temp.length < TWO){
+					print("Fehlerhafte Eingabe");
+					print(tuCon.nextInstruction());
+					break;
+				}
+				tuCon.move(temp[0], temp[1]);
+				printGame();
+				print(tuCon.getMessage());
+				print(tuCon.nextInstruction());
+				break;
+
+			case "steal":
+				tuCon.steal(next);
+				printGame();
+				print(tuCon.getMessage());
+				print(tuCon.nextInstruction());
+				break;
+
+			case "lose":
+				//restart
+				break;
+			}
+		}	
+	}
 }

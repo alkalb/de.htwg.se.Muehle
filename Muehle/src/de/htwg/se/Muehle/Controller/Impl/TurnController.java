@@ -9,8 +9,8 @@ public class TurnController implements ITurnController {
 	private IGameController gameCont;
 	private String status;
 	private String message;
-	private final static int MININDEX = 0;
-	private final static int MAXINDEX = 23;
+	private static final int MININDEX = 0;
+	private static final int MAXINDEX = 23;
 	
 	public TurnController(IGameController gc){
 		gameCont = gc;
@@ -73,7 +73,7 @@ public class TurnController implements ITurnController {
 			message = "Bitte 2 Zahlen zwischen 0 und 23 angeben.";
 		}
 	}
-
+  
 
 	public void steal(String target) {
 		try{
@@ -90,7 +90,11 @@ public class TurnController implements ITurnController {
 					status = "lose";
 					return;
 				}
-				status = "move";
+				if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
+					status = "move";
+					return;
+				}
+				status = "place";
 				return;
 			} else {
 				message = "Kein stehlbarer Stein an dieser Stelle.";
@@ -111,11 +115,22 @@ public class TurnController implements ITurnController {
 	}
 
 	private boolean isIndexAllowed(int x){
-		if(x >= MININDEX && x <= MAXINDEX){
-			return true;
-		} else {
-			return false;
-		}
+		return(x >= MININDEX && x <= MAXINDEX);
 	}
 
+	public String nextInstruction(){
+		String status = getStatus();
+		switch(status){
+		case "place":
+			return gameCont.getCurrPlayer().getName() + ": Setzen sie einen Stein.";
+		case "move":
+			return gameCont.getCurrPlayer().getName() + ": Bewegen sie einen Stein.";
+		case "steal":
+			return gameCont.getCurrPlayer().getName() + ": Stehlen sie einen Stein.";
+		case "lose":
+			return gameCont.getCurrPlayer().getName() + ": Sie haben verloren.";
+		default:
+			return "error";
+		}
+	}
 }

@@ -17,7 +17,7 @@ public class Field implements IField{
 	}
 
 	public String getFieldColor(){
-		if(this.playerOfField == null){
+		if(this.playerOfField.getName().equals("error")){
 			return " ";
 		} else {
 			return playerOfField.getColor();
@@ -40,7 +40,7 @@ public class Field implements IField{
 			IPlayer p2 = temp.getPlayerOfField();
 			
 			
-			if(temp.getFieldIndex() == this.getFieldIndex() && (p1 == p2 || p1.equals(p2))){
+			if(temp.getFieldIndex() == this.getFieldIndex() &&  p1.getName().equals(p2.getName())){
 					return true;
 			}
 		}

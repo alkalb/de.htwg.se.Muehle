@@ -12,7 +12,7 @@ public class BoardTest {
 	Board b;
 	Field f1;
 	int index;
-	Player p1;
+	Player p1, error;
 	Field fields[];
 	final int FIELDCOUNT = 24;
 	int[] connectionsAtFive;
@@ -21,12 +21,13 @@ public class BoardTest {
 	public void setUp(){
 		b = new Board();
 		p1 = new Player("Gustav", Color.BLACK);
+		error = new Player("error", Color.MAGENTA);
 		index = 1;
 		f1 = new Field(p1, index);
 		
 		fields = new Field[FIELDCOUNT];
 		for(int i = 0; i < fields.length; i++){
-			fields[i] = new Field(null, i);
+			fields[i] = new Field(error, i);
 		}
 		fields[1].setPlayerOfField(p1);
 		connectionsAtFive = new int[]{-1,4,13,6};
@@ -50,9 +51,11 @@ public class BoardTest {
 	@Test
 	public void testGetFields(){
 
+		
+		
 		fields[1].setPlayerOfField(p1);
 		b.setPosition(1, p1);
-	
+
 		assertArrayEquals(fields, b.getFields());
 	}
 	

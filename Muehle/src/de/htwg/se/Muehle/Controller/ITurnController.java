@@ -11,7 +11,7 @@ public interface ITurnController {
 	String getMessage();
 	
 	String getStatus();
-	
+	String nextInstruction();
 	
 	
 

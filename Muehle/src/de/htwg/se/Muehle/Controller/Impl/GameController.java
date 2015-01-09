@@ -1,5 +1,6 @@
 package de.htwg.se.Muehle.Controller.Impl;
 
+import java.awt.Color;
 import java.util.Map;
 
 import de.htwg.se.Muehle.Controller.IGameController;
@@ -7,10 +8,11 @@ import de.htwg.se.Muehle.Model.IBoard;
 import de.htwg.se.Muehle.Model.IField;
 import de.htwg.se.Muehle.Model.IPlayer;
 import de.htwg.se.Muehle.Model.Impl.Board;
+import de.htwg.se.Muehle.Model.Impl.Player;
 
 
 public class GameController implements IGameController {
-	private IPlayer currPlayer, oppPlayer;
+	private IPlayer currPlayer, oppPlayer, error;
 	private IBoard board;
 	private Map<Integer, int[]> connections;
 	private static final int TOP = 0;
@@ -22,6 +24,8 @@ public class GameController implements IGameController {
 	private static final int STEALABLECHECK = 3;
 	
 	public GameController(IPlayer p1, IPlayer p2) {
+		error = new Player("error", Color.MAGENTA);
+		
 		this.currPlayer = p1;
 		this.oppPlayer = p2;
 		this.board = new Board();
@@ -95,6 +99,7 @@ public class GameController implements IGameController {
 		IField[] fields = board.getFields();
 		int temp[] = connections.get(x);
 		for(int i= 0; i<=CORNERCHECK; i++){
+			
 			if(temp[i] != -1 && fields[temp[i]].getPlayerOfField().equals(p) && fields[connections.get(temp[i])[i]].getPlayerOfField().equals(p)){
 				return true;
 			}
@@ -112,8 +117,8 @@ public class GameController implements IGameController {
 		for(IField f : fields){
 			if(f.getPlayerOfField().equals(currPlayer)){
 				int temp[] = connections.get(f.getFieldIndex());
-				for(int i : temp){
-					if(i != -1 && isMoveAllowed(f.getFieldIndex(), temp[i])){
+				for(int i = 0; i< temp.length; i++){
+					if(temp[i] != -1 && isMoveAllowed(f.getFieldIndex(), temp[i])){
 						return true;
 					}
 				}
@@ -197,7 +202,7 @@ public class GameController implements IGameController {
 	
 	public boolean stealToken(int x){
 		if(isStealAllowed(x)) {
-			board.setPosition(x, null);
+			board.setPosition(x, error);
 			oppPlayer.setTokenCount(oppPlayer.getTokenCount() - 1);
 			return true;
 		} else {
@@ -207,7 +212,7 @@ public class GameController implements IGameController {
 	
 	public boolean moveToken(int x, int y){
 		if(isMoveAllowed(x, y)){
-			board.setPosition(x, null);
+			board.setPosition(x, error);
 			board.setPosition(y, currPlayer);
 			return true;
 		}
