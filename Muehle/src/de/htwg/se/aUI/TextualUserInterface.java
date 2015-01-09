@@ -31,7 +31,7 @@ public class TextualUserInterface {
 	private static final int TWENTYONE = 21;
 	private static final int TWENTYTWO = 22;
 	private static final int TWENTYTHREE = 23;
-	private static final int size = 24;
+	private static final int SIZE = 24;
 	
 	public TextualUserInterface(IGameController gc){
 		gamCon = gc;
@@ -59,9 +59,9 @@ public class TextualUserInterface {
 	public void printGame(){
 		
 		IField[] fields = board.getFields();
-		String[] output = new String[size];
+		String[] output = new String[SIZE];
 		
-		for(int i = 0; i < size; i++){
+		for(int i = 0; i < SIZE; i++){
 			output[i] = fields[i].getFieldColor();
 		}		
 		
@@ -92,5 +92,6 @@ public class TextualUserInterface {
 	private void print(String s){
 		System.out.printf(s);
 	}
+	
 
 }

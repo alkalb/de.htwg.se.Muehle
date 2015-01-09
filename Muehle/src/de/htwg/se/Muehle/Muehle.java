@@ -8,7 +8,7 @@ import de.htwg.se.Muehle.Model.IPlayer;
 import de.htwg.se.Muehle.Model.Impl.Player;
 import de.htwg.se.aUI.TextualUserInterface;
 
-public class Muehle {
+public final class Muehle {
 
 	private Muehle(){}
 	

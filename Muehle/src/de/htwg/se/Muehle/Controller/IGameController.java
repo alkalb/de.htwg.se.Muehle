@@ -8,6 +8,7 @@ public interface IGameController {
     boolean isMill(int x, IPlayer p);
 
 	boolean isMoveAllowed();
+	void nextPlayer();
 	
 	boolean isMoveAllowed(int x, int y);
 
@@ -21,5 +22,8 @@ public interface IGameController {
 	
 	IBoard getBoard();
 	
+	IPlayer getCurrPlayer();
 	
+	IPlayer getOppPlayer();
+
 }

@@ -28,12 +28,12 @@ public class GameController implements IGameController {
 		this.connections = board.getConnections();
 	}
 	
-	private void nextPlayer(){
+
+	public void nextPlayer(){
 		IPlayer temp = currPlayer;
 		currPlayer = oppPlayer;
 		oppPlayer = temp;
 	}
-	
 	
 	public boolean isMill(int x, IPlayer p){
 		if(x % 2 == 0){
@@ -220,6 +220,13 @@ public class GameController implements IGameController {
 		return board;
 	}
 	
+	public IPlayer getCurrPlayer(){
+		return currPlayer;
+	}
+	
+	public IPlayer getOppPlayer(){
+		return oppPlayer;
+	}
 	
 	
 }
