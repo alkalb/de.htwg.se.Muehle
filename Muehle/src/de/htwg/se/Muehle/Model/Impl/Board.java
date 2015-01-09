@@ -38,10 +38,9 @@ public class Board implements IBoard{
 	private static final int FIELDCOUNT = 24;
 	private IField fields[];
 	private Map<Integer, int[]> connections;
-	private IPlayer error;
 	
 	public Board(){
-		error = new Player("error", Color.MAGENTA);
+		IPlayer error = new Player("error", Color.MAGENTA);
 		
 		
 		fields = new Field[FIELDCOUNT];

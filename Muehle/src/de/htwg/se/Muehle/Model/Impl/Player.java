@@ -48,19 +48,4 @@ public class Player implements IPlayer{
 	}
 	
 	
-	
-	/*@Override
-	public boolean equals(Object o) {
-
-		
-		
-		if(o instanceof Player){
-			IPlayer temp = (Player) o;
-			
-			if(this.getColor().toString().equals(temp.getColor().toString())){
-				return true;
-			}
-		}
-		return false;
-	}*/
 }

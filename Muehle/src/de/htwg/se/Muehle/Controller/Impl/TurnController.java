@@ -92,7 +92,6 @@ public class TurnController implements ITurnController {
 				}
 				if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
 					status = "move";
-					return;
 				}
 				status = "place";
 				return;
@@ -119,8 +118,8 @@ public class TurnController implements ITurnController {
 	}
 
 	public String nextInstruction(){
-		String status = getStatus();
-		switch(status){
+		String stat = getStatus();
+		switch(stat){
 		case "place":
 			return gameCont.getCurrPlayer().getName() + ": Setzen sie einen Stein.";
 		case "move":
