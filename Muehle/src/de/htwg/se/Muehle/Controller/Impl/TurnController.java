@@ -3,7 +3,6 @@ package de.htwg.se.Muehle.Controller.Impl;
 import de.htwg.se.Muehle.Controller.ITurnController;
 import de.htwg.se.Muehle.Controller.IGameController;
 import de.htwg.se.Muehle.Model.IBoard;
-import de.htwg.se.Muehle.Model.IPlayer;
 
 public class TurnController implements ITurnController {
 	
@@ -11,6 +10,8 @@ public class TurnController implements ITurnController {
 	private IBoard board;
 	private String status;
 	private String message;
+	private final static int MININDEX = 0;
+	private final static int MAXINDEX = 23;
 	
 	public TurnController(IGameController gc){
 		gameCont = gc;
@@ -24,7 +25,7 @@ public class TurnController implements ITurnController {
 	public void place(String target) {
 		try{
 			int x = Integer.parseInt(target);
-			if(x >= 0 && x <= 23 && gameCont.placeToken(x)){
+			if(x >= MININDEX && x <= MAXINDEX && gameCont.placeToken(x)){
 				
 				if(gameCont.isMill(x, gameCont.getCurrPlayer())){
 					status = "steal";
@@ -57,7 +58,7 @@ public class TurnController implements ITurnController {
 			if(!gameCont.isMoveAllowed()){
 				status = "lose";
 				return;
-			} else if(x >= 0 && x <= 23 && y >= 0 && y <= 23 && gameCont.moveToken(x, y)) {
+			} else if(x >= MININDEX && x <= MAXINDEX && y >= MININDEX && y <= MAXINDEX && gameCont.moveToken(x, y)) {
 				if(gameCont.isMill(y, gameCont.getCurrPlayer())){
 					status = "steal";
 					message = "Sie haben eine Mühle.";

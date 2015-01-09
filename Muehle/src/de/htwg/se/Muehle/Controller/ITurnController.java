@@ -8,9 +8,9 @@ public interface ITurnController {
 	
 	void steal(String target);
 	
-	public String getMessage();
+	String getMessage();
 	
-	public String getStatus();
+	String getStatus();
 	
 	
 	
