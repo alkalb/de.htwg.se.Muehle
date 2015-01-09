@@ -16,8 +16,7 @@ public interface IGameController {
 	boolean isStealAllowed();
 	boolean isStealAllowed(int x);
 	boolean placeToken(int x);
-	int stealToken(int x);
-	
+	boolean stealToken(int x);
 	boolean moveToken(int x, int y);
 	
 	IBoard getBoard();

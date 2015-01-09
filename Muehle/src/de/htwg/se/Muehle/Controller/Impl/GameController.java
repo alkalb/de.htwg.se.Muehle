@@ -195,15 +195,13 @@ public class GameController implements IGameController {
 		return false;
 	}
 	
-	public int stealToken(int x){
-		if(!isStealAllowed()){
-			return -1;
-		} else if(isStealAllowed(x)) {
+	public boolean stealToken(int x){
+		if(isStealAllowed(x)) {
 			board.setPosition(x, null);
 			oppPlayer.setTokenCount(oppPlayer.getTokenCount() - 1);
-			return 1;
+			return true;
 		} else {
-			return 0;
+			return false;
 		}
 	}
 	
