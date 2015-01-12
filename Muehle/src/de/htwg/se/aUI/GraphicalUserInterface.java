@@ -37,6 +37,7 @@ public class GraphicalUserInterface extends JFrame{
 								"|          |         |\n" +
 								"0----------1---------2");
 		positions.setEditable(false);
+		positions.setBackground(new Color(254, 219, 179, 255));
 		sourceLabel = new JLabel("Start");
 		targetLabel = new JLabel("Ziel");
 		player1tokens = new JLabel("9");
@@ -44,7 +45,9 @@ public class GraphicalUserInterface extends JFrame{
 		blank = new JLabel("");
 		
 		source = new JTextField("", 2);
+		source.setBackground(new Color(254, 219, 179, 255));
 		target = new JTextField("", 2);
+		target.setBackground(new Color(254, 219, 179, 255));
 		
 		restart = new JButton("Neustart");
 		help = new JButton("Hilfe");
@@ -56,6 +59,7 @@ public class GraphicalUserInterface extends JFrame{
 		
 		commands = new JPanel();
 		commands.setLayout(new GridLayout(2, 2));
+		commands.setBackground(new Color(254, 219, 179, 255));
 		commands.add(sourceLabel);
 		commands.add(targetLabel);
 		commands.add(source);
@@ -64,7 +68,7 @@ public class GraphicalUserInterface extends JFrame{
 		infos = new JPanel();
 		infos.setLayout(new GridLayout(3,2));
 		infos.setPreferredSize(new Dimension(350, 200));
-		infos.setBackground(Color.cyan);
+		infos.setBackground(new Color(254, 219, 179, 255));
 		infos.add(header);
 		infos.add(blank);
 		infos.add(player1);
@@ -74,6 +78,7 @@ public class GraphicalUserInterface extends JFrame{
 				
 		sidebar = new JPanel();
 		sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
+		sidebar.setBackground(new Color(254, 219, 179, 255));
 		sidebar.add(infos);
 		sidebar.add(message);
 		sidebar.add(commands);
@@ -82,7 +87,7 @@ public class GraphicalUserInterface extends JFrame{
 		
 		board = new JPanel();
 		board.setPreferredSize(new Dimension(750, 750));
-		board.setBackground(Color.WHITE);
+		board.setBackground(new Color(254, 219, 179, 255));
 		
 		main = new JPanel();
 		main.setLayout(new BoxLayout(main, BoxLayout.X_AXIS));
