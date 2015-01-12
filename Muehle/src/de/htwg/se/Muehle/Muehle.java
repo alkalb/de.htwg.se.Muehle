@@ -9,6 +9,7 @@ import de.htwg.se.Muehle.Controller.Impl.GameController;
 import de.htwg.se.Muehle.Controller.Impl.TurnController;
 import de.htwg.se.Muehle.Model.IPlayer;
 import de.htwg.se.Muehle.Model.Impl.Player;
+import de.htwg.se.aUI.GraphicalUserInterface;
 import de.htwg.se.aUI.TextualUserInterface;
 
 public final class Muehle {
@@ -22,6 +23,7 @@ public final class Muehle {
 		IGameController gaCo = new GameController(p1, p2);
 		ITurnController tuCo = new TurnController(gaCo);
 		TextualUserInterface tui = new TextualUserInterface(gaCo, tuCo);
+		GraphicalUserInterface gui = new GraphicalUserInterface();
 		
 		tui.printHelp();
 		tui.printGame();
