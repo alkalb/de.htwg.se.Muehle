@@ -8,7 +8,6 @@ import javax.swing.*;
 import de.htwg.se.Muehle.Controller.IGameController;
 import de.htwg.se.Muehle.Controller.ITurnController;
 import de.htwg.se.Muehle.Model.IBoard;
-import de.htwg.se.Muehle.Model.IField;
 import de.htwg.se.Muehle.Model.IPlayer;
 
 public class GraphicalUserInterface extends JFrame{
@@ -98,28 +97,133 @@ public class GraphicalUserInterface extends JFrame{
 		sidebar.setPreferredSize(new Dimension(200, 500));
 		
 		
-		JPanel overlay = new JPanel();
-		overlay.setLayout(new GridLayout(7,7));
-		for(int i = 0; i < 49; i++){
-			JLabel temp = new JLabel();
-			temp.setBackground(null);
-			temp.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
-			overlay.add(temp);
-		}
-		overlay.setBounds(26, 14, 480, 480);
-		overlay.setBackground(null);
+		JLabel pos0 = new JLabel();
+		pos0.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos0.setBounds(27, 435, 38, 38);
 		
+		JLabel pos1 = new JLabel();
+		pos1.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos1.setBounds(231, 435, 38, 38);
 		
+		JLabel pos2 = new JLabel();
+		pos2.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos2.setBounds(436, 436, 38, 38);
+		
+		JLabel pos3 = new JLabel();
+		pos3.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos3.setBounds(436, 231, 38, 38);
+
+		JLabel pos4 = new JLabel();
+		pos4.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos4.setBounds(436, 26, 38, 38);
+
+		JLabel pos5 = new JLabel();
+		pos5.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos5.setBounds(231, 26, 38, 38);
+		
+		JLabel pos6 = new JLabel();
+		pos6.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos6.setBounds(27, 27, 38, 38);
+		
+		JLabel pos7 = new JLabel();
+		pos7.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos7.setBounds(27, 235, 38, 38);
+		
+		JLabel pos8 = new JLabel();
+		pos8.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos8.setBounds(96, 366, 38, 38);
+		
+		JLabel pos9 = new JLabel();
+		pos9.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos9.setBounds(231, 366, 38, 38);
+		
+		JLabel pos10 = new JLabel();
+		pos10.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos10.setBounds(366, 366, 38, 38);
+
+		JLabel pos11 = new JLabel();
+		pos11.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos11.setBounds(366, 231, 38, 38);
+
+		JLabel pos12 = new JLabel();
+		pos12.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos12.setBounds(366, 96, 38, 38);
+
+		JLabel pos13 = new JLabel();
+		pos13.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos13.setBounds(231, 96, 38, 38);
+		
+		JLabel pos14 = new JLabel();
+		pos14.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos14.setBounds(96, 96, 38, 38);
+		
+		JLabel pos15 = new JLabel();
+		pos15.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos15.setBounds(96, 231, 38, 38);
+		
+		JLabel pos16 = new JLabel();
+		pos16.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos16.setBounds(166, 296, 38, 38);
+		
+		JLabel pos17 = new JLabel();
+		pos17.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos17.setBounds(231, 296, 38, 38);
+		
+		JLabel pos18 = new JLabel();
+		pos18.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos18.setBounds(296, 296, 38, 38);
+
+		JLabel pos19 = new JLabel();
+		pos19.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos19.setBounds(296, 231, 38, 38);
+
+		JLabel pos20 = new JLabel();
+		pos20.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos20.setBounds(296, 166, 38, 38);
+
+		JLabel pos21 = new JLabel();
+		pos21.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos21.setBounds(231, 166, 38, 38);
+		
+		JLabel pos22 = new JLabel();
+		pos22.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos22.setBounds(166, 166, 38, 38);
+		
+		JLabel pos23 = new JLabel();
+		pos23.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif")));
+		pos23.setBounds(166, 231, 38, 38);
 		
 		boardP = new JPanel();
 		boardP.setLayout(null);
-		boardP.setBackground(null);
 		boardbg.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/board.gif")));
 		boardP.setPreferredSize(new Dimension(550, 500));
-		boardbg.setBounds(0, 0, 550, 500);
-		
-		boardP.add(overlay);		
+		boardbg.setBounds(0, 0, 500, 500);		
+		boardP.add(pos0);
+		boardP.add(pos1);
+		boardP.add(pos2);
+		boardP.add(pos3);
+		boardP.add(pos4);
+		boardP.add(pos5);
+		boardP.add(pos6);
+		boardP.add(pos7);
+		boardP.add(pos8);
+		boardP.add(pos9);
+		boardP.add(pos10);
+		boardP.add(pos11);
+		boardP.add(pos12);
+		boardP.add(pos13);
+		boardP.add(pos14);
+		boardP.add(pos15);
+		boardP.add(pos16);
+		boardP.add(pos17);
+		boardP.add(pos18);
+		boardP.add(pos19);
+		boardP.add(pos20);
+		boardP.add(pos21);
+		boardP.add(pos22);
+		boardP.add(pos23);
 		boardP.add(boardbg);
+		
 		
 		main = new JPanel();
 		main.setLayout(new BoxLayout(main, BoxLayout.X_AXIS));
