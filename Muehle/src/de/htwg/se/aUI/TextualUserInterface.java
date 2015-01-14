@@ -84,7 +84,7 @@ public class TextualUserInterface {
 	}
 
 	public void sendInput(String next) {
-		String status = tuCon.getStatus();
+		
 		
 		if(next.equals("/restart")){
 			System.exit(0);
@@ -93,7 +93,7 @@ public class TextualUserInterface {
 		} else if(next.equals("/exit")){
 			System.exit(0);
 		} else {
-		
+			String status = tuCon.getStatus();
 			switch(status){
 			case "place":
 				tuCon.place(next);
