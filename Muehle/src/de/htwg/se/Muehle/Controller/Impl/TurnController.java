@@ -56,6 +56,8 @@ public class TurnController implements ITurnController {
 				status = "lose";
 				return;
 			} else if(isIndexAllowed(x) && isIndexAllowed(y) && gameCont.moveToken(x, y)) {
+				
+				
 				if(gameCont.isMill(y, gameCont.getCurrPlayer())){
 					status = "steal";
 					message = "Sie haben eine Mühle.";
@@ -65,6 +67,9 @@ public class TurnController implements ITurnController {
 					message = "Stein erfolgreich gesetzt.";
 					return;
 				}
+				
+				
+				
 			} else {
 				message = "Zug nicht möglich, bitte Spielfeld beachten.";
 				return;
@@ -82,19 +87,24 @@ public class TurnController implements ITurnController {
 				message = "Kein Stein kann gestohlen werden.";
 				gameCont.nextPlayer();
 				
-				
-				
-				status = "move";
+				if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
+					status = "move";
+					return;
+				}
+				status = "place";
 				return;
 			} else if(isIndexAllowed(x) && gameCont.stealToken(x)) {
 				message = "Stein wurde geklaut";
 				gameCont.nextPlayer();
+				
+				
 				if(gameCont.getCurrPlayer().getTokenCount() == 2 && gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
 					status = "lose";
 					return;
 				}
 				if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
 					status = "move";
+					return;
 				}
 				status = "place";
 				return;
@@ -104,7 +114,7 @@ public class TurnController implements ITurnController {
 			}
 			
 		} catch(NumberFormatException e){
-			message = "Bitte eine Zahl zwischen 0 und 23 angeben.";
+			message = "Bitte Zahl zwischen 0 und 23 angeben.";
 		}
 	}
 
@@ -129,10 +139,9 @@ public class TurnController implements ITurnController {
 			return gameCont.getCurrPlayer().getName() + ": Bewegen sie einen Stein.";
 		case "steal":
 			return gameCont.getCurrPlayer().getName() + ": Stehlen sie einen Stein.";
-		case "lose":
-			return gameCont.getCurrPlayer().getName() + ": Sie haben verloren.";
 		default:
-			return "error";
+			return gameCont.getCurrPlayer().getName() + ": Sie haben verloren.";
 		}
 	}
+	
 }
