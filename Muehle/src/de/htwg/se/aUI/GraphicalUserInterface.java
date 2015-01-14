@@ -9,38 +9,25 @@ public class GraphicalUserInterface extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private JLabel header, player1, player2, message, sourceLabel, targetLabel, player1tokens, player2tokens, blank, boardbg;
+	private JLabel header, player1, player2, message, sourceLabel, targetLabel, player1tokens, player2tokens, blank, boardbg, positions;
 	private JTextField source, target;
-	private JButton restart, help;
+	private JButton restart, help,submit;
 	private JPanel main, board, infos, commands, buttons, sidebar;
-	private JTextArea positions;
-	private static final int XINFOS = 350;
+	private static final int XINFOS = 150;
 	private static final int YINFOS = 200;
-	private static final int INFOSYLENGTH = 3;
+	private static final int SIDEBARTHREE = 3;
 	
 	public GraphicalUserInterface(){
 		this.setTitle("Mühle");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-		header = new JLabel("Platzierbare Steine");
+		header = new JLabel("Setzbare Steine");
 		player1 = new JLabel("Spieler 1:");
 		player2 = new JLabel("Spieler 2:");
 		message = new JLabel("");
-		positions = new JTextArea("6----------5---------4\n" +
-								"|          |         |\n" +
-								"|  14-----13-----12  |\n" +
-								"|  |       |      |  |\n" +
-								"|  |  22---21--20 |  |\n" +
-								"|  |   |       |  |  |\n" +
-								"7--15--23      19-11-3\n" +
-								"|  |   |       |  |  |\n" +
-								"|  |  16---17--18 |  |\n" +
-								"|  |       |      |  |\n" +
-								"|  8-------9------10 |\n" +
-								"|          |         |\n" +
-								"0----------1---------2");
-		positions.setEditable(false);
+		positions = new JLabel();
+		positions.setPreferredSize(new Dimension(230, 230));
 		sourceLabel = new JLabel("Start");
 		targetLabel = new JLabel("Ziel");
 		player1tokens = new JLabel("9");
@@ -53,6 +40,7 @@ public class GraphicalUserInterface extends JFrame{
 		
 		restart = new JButton("Neustart");
 		help = new JButton("Hilfe");
+		submit = new JButton("Senden");
 		
 		buttons = new JPanel();
 		buttons.setLayout(new BoxLayout(buttons, BoxLayout.X_AXIS));
@@ -60,14 +48,17 @@ public class GraphicalUserInterface extends JFrame{
 		buttons.add(help);
 		
 		commands = new JPanel();
-		commands.setLayout(new GridLayout(2, 2));
+		commands.setLayout(new GridLayout(SIDEBARTHREE, 2));
 		commands.add(sourceLabel);
 		commands.add(targetLabel);
 		commands.add(source);
 		commands.add(target);
+		commands.add(submit);
+		commands.add(blank);
+		
 		
 		infos = new JPanel();
-		infos.setLayout(new GridLayout(INFOSYLENGTH,2));
+		infos.setLayout(new GridLayout(SIDEBARTHREE,2));
 		infos.setPreferredSize(new Dimension(XINFOS, YINFOS));
 		infos.add(header);
 		infos.add(blank);
@@ -81,9 +72,13 @@ public class GraphicalUserInterface extends JFrame{
 		sidebar.add(infos);
 		sidebar.add(message);
 		sidebar.add(commands);
-		//sidebar.add(positions);
+		JPanel pos = new JPanel();
+		pos.setLayout(new GridLayout(1, 1));
+		positions.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/positions.PNG")));
+		pos.add(positions);
+		sidebar.add(pos);
 		sidebar.add(buttons);
-		sidebar.setPreferredSize(new Dimension(300, 500));
+		sidebar.setPreferredSize(new Dimension(200, 500));
 		
 		board = new JPanel();
 		boardbg.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/board.gif")));
@@ -94,11 +89,12 @@ public class GraphicalUserInterface extends JFrame{
 		main.setLayout(new BoxLayout(main, BoxLayout.X_AXIS));
 		main.add(board);
 		main.add(sidebar);
-		main.setPreferredSize(new Dimension(850, 510));
+		main.setPreferredSize(new Dimension(750, 510));
 		
 		
 		this.add(main);
 		this.pack();
+		this.setResizable(false);
 		this.setVisible(true);
 	}
 
