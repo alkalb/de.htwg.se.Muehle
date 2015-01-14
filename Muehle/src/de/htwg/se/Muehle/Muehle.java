@@ -23,10 +23,10 @@ public final class Muehle {
 		IGameController gaCo = new GameController(p1, p2);
 		ITurnController tuCo = new TurnController(gaCo);
 		TextualUserInterface tui = new TextualUserInterface(gaCo, tuCo);
-		GraphicalUserInterface gui = new GraphicalUserInterface();
+		GraphicalUserInterface gui = new GraphicalUserInterface(gaCo, tuCo);
 		
-		tui.printHelp();
-		tui.printGame();
+		tui.showHelp();
+		tui.showGame();
 		System.out.println(tuCo.nextInstruction());
 		final Scanner in = new Scanner(System.in);
 				

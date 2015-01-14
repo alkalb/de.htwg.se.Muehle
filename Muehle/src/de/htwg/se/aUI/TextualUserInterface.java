@@ -43,26 +43,14 @@ public class TextualUserInterface {
 		tuCon = tc;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void printHelp(){
+	public void showHelp(){
 		print("/restart Restarts the game\n"
 				+ "/exit Exits the game\n"
 				+ "/help Shows this text\n"
 				+ "steal and place as single number, move as number/number");
 	}
-	
 
-	
-
-	public void printGame(){
+	public void showGame(){
 		
 		IField[] fields = board.getFields();
 		String[] output = new String[SIZE];
@@ -70,9 +58,6 @@ public class TextualUserInterface {
 		for(int i = 0; i < SIZE; i++){
 			output[i] = fields[i].getFieldColor();
 		}		
-		
-
-		
 		
 		System.out.printf("\n6----------5---------4 \t\t%s---------%s---------%s\n" +
 				  "|          |         | \t\t|         |         |\n" +
@@ -94,11 +79,9 @@ public class TextualUserInterface {
 			  output[TWO]);
 	}
 	
-	
 	private void print(String s){
 		System.out.println(s);
 	}
-
 
 	public void sendInput(String next) {
 		String status = tuCon.getStatus();
@@ -106,7 +89,7 @@ public class TextualUserInterface {
 		if(next.equals("/restart")){
 			System.exit(0);
 		} else if(next.equals("/help")){
-			printHelp();
+			showHelp();
 		} else if(next.equals("/exit")){
 			System.exit(0);
 		} else {
@@ -114,7 +97,7 @@ public class TextualUserInterface {
 			switch(status){
 			case "place":
 				tuCon.place(next);
-				printGame();
+				showGame();
 				print(tuCon.getMessage());
 				print(tuCon.nextInstruction());
 				break;
@@ -128,14 +111,14 @@ public class TextualUserInterface {
 					break;
 				}
 				tuCon.move(temp[0], temp[1]);
-				printGame();
+				showGame();
 				print(tuCon.getMessage());
 				print(tuCon.nextInstruction());
 				break;
 
 			case "steal":
 				tuCon.steal(next);
-				printGame();
+				showGame();
 				print(tuCon.getMessage());
 				print(tuCon.nextInstruction());
 				break;
