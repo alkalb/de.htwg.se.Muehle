@@ -83,16 +83,19 @@ public class GraphicalUserInterface extends JFrame{
 		sidebar.add(commands);
 		//sidebar.add(positions);
 		sidebar.add(buttons);
+		sidebar.setPreferredSize(new Dimension(300, 500));
 		
 		board = new JPanel();
-		boardbg.setIcon(new ImageIcon("../resources/board.png"));
-		board.setPreferredSize(new Dimension(500, 500));
+		boardbg.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/board.gif")));
+		board.setPreferredSize(new Dimension(550, 500));
 		board.add(boardbg);
 		
 		main = new JPanel();
 		main.setLayout(new BoxLayout(main, BoxLayout.X_AXIS));
 		main.add(board);
 		main.add(sidebar);
+		main.setPreferredSize(new Dimension(850, 510));
+		
 		
 		this.add(main);
 		this.pack();
