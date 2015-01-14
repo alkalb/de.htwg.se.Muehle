@@ -1,8 +1,6 @@
 package de.htwg.se.aUI;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
 import javax.swing.*;
@@ -11,13 +9,11 @@ public class GraphicalUserInterface extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private JLabel header, player1, player2, message, sourceLabel, targetLabel, player1tokens, player2tokens, blank;
+	private JLabel header, player1, player2, message, sourceLabel, targetLabel, player1tokens, player2tokens, blank, boardbg;
 	private JTextField source, target;
 	private JButton restart, help;
 	private JPanel main, board, infos, commands, buttons, sidebar;
 	private JTextArea positions;
-	private static final int XBOARD = 750;
-	private static final int YBOARD = 750;
 	private static final int XINFOS = 350;
 	private static final int YINFOS = 200;
 	private static final int INFOSYLENGTH = 3;
@@ -49,7 +45,8 @@ public class GraphicalUserInterface extends JFrame{
 		targetLabel = new JLabel("Ziel");
 		player1tokens = new JLabel("9");
 		player2tokens = new JLabel("9");
-		blank = new JLabel("");
+		blank = new JLabel();
+		boardbg = new JLabel();
 		
 		source = new JTextField("", 2);
 		target = new JTextField("", 2);
@@ -80,7 +77,7 @@ public class GraphicalUserInterface extends JFrame{
 		infos.add(player2tokens);
 				
 		sidebar = new JPanel();
-		sidebar.setLayout(new GridBagLayout());
+		sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
 		sidebar.add(infos);
 		sidebar.add(message);
 		sidebar.add(commands);
@@ -88,8 +85,9 @@ public class GraphicalUserInterface extends JFrame{
 		sidebar.add(buttons);
 		
 		board = new JPanel();
-		board.setPreferredSize(new Dimension(XBOARD, YBOARD));
-		board.setBackground(Color.WHITE);
+		boardbg.setIcon(new ImageIcon("../resources/board.png"));
+		board.setPreferredSize(new Dimension(500, 500));
+		board.add(boardbg);
 		
 		main = new JPanel();
 		main.setLayout(new BoxLayout(main, BoxLayout.X_AXIS));
