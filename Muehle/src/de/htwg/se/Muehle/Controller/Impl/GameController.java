@@ -168,7 +168,7 @@ public class GameController implements IGameController {
 	
 	public boolean isStealAllowed(){
 		for(IField f : board.getFields()){
-			if(f.getPlayerOfField().equals(oppPlayer) && isStealAllowed(f.getFieldIndex())){
+			if(isStealAllowed(f.getFieldIndex())){
 				return true;
 			}
 		}
@@ -187,6 +187,7 @@ public class GameController implements IGameController {
 		if(isMill(x, oppPlayer) && (oppPlayer.getTokenCount() > STEALABLECHECK || oppPlayer.getTokenCount() == STEALABLECHECK && oppPlayer.getPlaceableTokenCount() > 0)){
 			return false;
 		}
+		
 		return true;
 	}
 	

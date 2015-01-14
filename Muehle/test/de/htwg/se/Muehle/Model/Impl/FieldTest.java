@@ -42,6 +42,14 @@ public class FieldTest {
 	}
 	
 	@Test
+	public void testequals(){
+		String a = new String("hi");
+		assertFalse(f1.equals(a));
+		assertFalse(f1.equals(f2));
+		
+	}
+	
+	@Test
 	public void testGetFieldIndex(){
 		assertSame(index, f1.getFieldIndex());
 	}

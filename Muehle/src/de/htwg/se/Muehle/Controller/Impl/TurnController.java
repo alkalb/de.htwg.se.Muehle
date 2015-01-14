@@ -81,6 +81,9 @@ public class TurnController implements ITurnController {
 			if(!gameCont.isStealAllowed()){
 				message = "Kein Stein kann gestohlen werden.";
 				gameCont.nextPlayer();
+				
+				
+				
 				status = "move";
 				return;
 			} else if(isIndexAllowed(x) && gameCont.stealToken(x)) {
