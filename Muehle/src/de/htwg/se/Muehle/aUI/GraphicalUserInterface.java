@@ -2,7 +2,6 @@ package de.htwg.se.Muehle.aUI;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -33,6 +32,27 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 	private static final int BOARDYLENGTH = 500;
 	private static final int GAMEXLENGTH = 550;
 	private static final int GAMEYLENGTH = 500;
+	
+	private static final int PIXELZERO = 0;
+	private static final int PIXELTWENTY = 20;
+	private static final int PIXELTWENTYFIVE = 25;
+	private static final int PIXELTHIRTY = 30;
+	private static final int PIXELFIFTY = 50;
+	private static final int PIXELNINETY = 90;
+	private static final int PIXELONEHUNDRED = 100;
+	private static final int PIXELONEHUNDREDTWENTY = 120;
+	private static final int PIXELONEHUNDREDTWENTYFIVE = 125;
+	private static final int PIXELONEHUNDREDSIXTYTHREE = 163;
+	private static final int PIXELONEHUNDREDNINETYEIGHT = 198;
+	private static final int PIXELTWOHUNDRED = 200;
+	private static final int PIXELTWOHUNDREDTWENTY = 220;
+	private static final int PIXELTWOHUNDREDFOURTY = 240;
+	private static final int PIXELTWOHUNDREDFIFTY = 250;
+	private static final int PIXELTWOHUNDREDSEVENTY = 270;
+	private static final int PIXELTWOHUNDREDNINETY = 290;		
+	private static final int PIXELTHREEHUNDREDTWENTY = 320;
+	private static final int PIXELTHREEHUNDREDFOURTYFIVE = 345;
+	private static final int PIXELFOURHUNDREDSEVENTY = 470;
 	
 	
 	private IPlayer playerOne, playerTwo;
@@ -88,21 +108,22 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		sidebar = new JPanel();
 		sidebar.setLayout(null);
 		positions.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/positions.PNG")));
-		positions.setBounds(0, 0, 163, 198);
-		header.setBounds(0, 200, 200, 20);
-		player1.setBounds(0, 220, 100, 20);
-		player2.setBounds(0, 240, 100, 20);
-		player1tokens.setBounds(120, 220, 50, 20);
-		player2tokens.setBounds(120, 240, 50, 20);
-		sourceLabel.setBounds(0, 270, 100, 20);
-		targetLabel.setBounds(100, 270, 100, 20);
-		source.setBounds(0, 290, 90, 25);
-		target.setBounds(100, 290, 90, 25);
-		submit.setBounds(50, 320, 100, 25);
-		message.setBounds(0, 345, 250, 125);
-		help.setBounds(0, 470, 90, 30);
-		restart.setBounds(100, 470, 90, 30);
+		positions.setBounds(PIXELZERO, PIXELZERO, PIXELONEHUNDREDSIXTYTHREE, PIXELONEHUNDREDNINETYEIGHT);
+		header.setBounds(PIXELZERO, PIXELTWOHUNDRED, PIXELTWOHUNDRED, PIXELTWENTY);
+		player1.setBounds(PIXELZERO, PIXELTWOHUNDREDTWENTY, PIXELONEHUNDRED, PIXELTWENTY);
+		player2.setBounds(PIXELZERO, PIXELTWOHUNDREDFOURTY, PIXELONEHUNDRED, PIXELTWENTY);
+		player1tokens.setBounds(PIXELONEHUNDREDTWENTY, PIXELTWOHUNDREDTWENTY, PIXELFIFTY, PIXELTWENTY);
+		player2tokens.setBounds(PIXELONEHUNDREDTWENTY, PIXELTWOHUNDREDFOURTY, PIXELFIFTY, PIXELTWENTY);
+		sourceLabel.setBounds(PIXELZERO, PIXELTWOHUNDREDSEVENTY, PIXELONEHUNDRED, PIXELTWENTY);
+		targetLabel.setBounds(PIXELONEHUNDRED, PIXELTWOHUNDREDSEVENTY, PIXELONEHUNDRED, PIXELTWENTY);
+		source.setBounds(PIXELZERO, PIXELTWOHUNDREDNINETY, PIXELNINETY, PIXELTWENTYFIVE);
+		target.setBounds(PIXELONEHUNDRED, PIXELTWOHUNDREDNINETY, PIXELNINETY, PIXELTWENTYFIVE);
+		submit.setBounds(PIXELFIFTY, PIXELTHREEHUNDREDTWENTY, PIXELONEHUNDRED, PIXELTWENTYFIVE);
+		message.setBounds(PIXELZERO, PIXELTHREEHUNDREDFOURTYFIVE, PIXELTWOHUNDREDFIFTY, PIXELONEHUNDREDTWENTYFIVE);
+		help.setBounds(PIXELZERO, PIXELFOURHUNDREDSEVENTY, PIXELNINETY, PIXELTHIRTY);
+		restart.setBounds(PIXELONEHUNDRED, PIXELFOURHUNDREDSEVENTY, PIXELNINETY, PIXELTHIRTY);
 		message.setEditable(false);
+		
 		
 		sidebar.add(header);
 		sidebar.add(player1);

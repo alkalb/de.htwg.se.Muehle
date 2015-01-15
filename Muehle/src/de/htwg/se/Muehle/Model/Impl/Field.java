@@ -6,6 +6,7 @@ import de.htwg.se.Muehle.Model.IPlayer;
 public class Field implements IField{
 	private IPlayer playerOfField;
 	private int fieldIndex;
+	private static final int DOUBLELEFTSHIFT = 100;
 
 	public Field(IPlayer pof, int index){
 		this.playerOfField = pof;
@@ -48,7 +49,7 @@ public class Field implements IField{
 	}
 	@Override
 	public int hashCode(){
-		return playerOfField.hashCode() * 100 + fieldIndex;
+		return playerOfField.hashCode() * DOUBLELEFTSHIFT + fieldIndex;
 	}
 	
 }
