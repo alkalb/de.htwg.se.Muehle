@@ -32,7 +32,7 @@ public class TurnControlTest {
 	public void test() {
 		turn.place("-1");
 		turn.place("25");
-		assertEquals(turn.getMessage(), "Ungültiges Feld zum platzieren angegeben, bitte Spielfeld beachten.");
+		assertEquals(turn.getMessage(), "Ungültiges Feld zum platzieren angegeben,\nbitte Spielfeld beachten.");
 		
 		turn.place("hallo");
 		assertEquals(turn.getMessage(), "Bitte Zahl zwischen 0 und 23 angeben.");
@@ -41,7 +41,7 @@ public class TurnControlTest {
 		assertEquals(turn.getStatus(), "place");
 		turn.place("20");
 		turn.place("0");
-		assertEquals(turn.getMessage(), "Ungültiges Feld zum platzieren angegeben, bitte Spielfeld beachten.");
+		assertEquals(turn.getMessage(), "Ungültiges Feld zum platzieren angegeben,\nbitte Spielfeld beachten.");
 		assertEquals(turn.nextInstruction(), cont.getCurrPlayer().getName() + ": Setzen sie einen Stein.");
 		turn.place("1");
 		turn.place("21");
