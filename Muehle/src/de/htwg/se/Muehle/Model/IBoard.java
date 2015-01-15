@@ -3,7 +3,7 @@ package de.htwg.se.Muehle.Model;
 import java.util.Map;
 
 /**
- * Class, which contains information about the tokens and players of a mill game.
+ * Interface for a class, which contains information about the tokens and players of a mill game.
  * 
  * @author alkalb, fewieden
  * 
