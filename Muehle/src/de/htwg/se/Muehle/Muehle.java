@@ -9,8 +9,8 @@ import de.htwg.se.Muehle.Controller.Impl.GameController;
 import de.htwg.se.Muehle.Controller.Impl.TurnController;
 import de.htwg.se.Muehle.Model.IPlayer;
 import de.htwg.se.Muehle.Model.Impl.Player;
-import de.htwg.se.aUI.GraphicalUserInterface;
-import de.htwg.se.aUI.TextualUserInterface;
+import de.htwg.se.Muehle.aUI.GraphicalUserInterface;
+import de.htwg.se.Muehle.aUI.TextualUserInterface;
 
 public final class Muehle {
 

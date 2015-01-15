@@ -1,4 +1,4 @@
-package de.htwg.se.aUI;
+package de.htwg.se.Muehle.aUI;
 
 import java.awt.Color;
 import java.awt.Dimension;

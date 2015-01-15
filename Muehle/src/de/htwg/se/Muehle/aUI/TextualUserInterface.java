@@ -1,4 +1,4 @@
-package de.htwg.se.aUI;
+package de.htwg.se.Muehle.aUI;
 
 import de.htwg.se.Muehle.Controller.IGameController;
 import de.htwg.se.Muehle.Controller.ITurnController;
