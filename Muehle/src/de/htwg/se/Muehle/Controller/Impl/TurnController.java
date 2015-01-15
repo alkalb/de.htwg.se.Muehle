@@ -9,12 +9,16 @@ public class TurnController implements ITurnController {
 	private IGameController gameCont;
 	private String status;
 	private String message;
+	private static final String PLACE ="place";
+	private static final String MOVE ="move";
+	private static final String STEAL ="steal";
+	private static final String LOSE ="lose";
 	private static final int MININDEX = 0;
 	private static final int MAXINDEX = 23;
 	
 	public TurnController(IGameController gc){
 		gameCont = gc;
-		status = "place";
+		status = PLACE;
 	}
 	
 	
@@ -25,14 +29,14 @@ public class TurnController implements ITurnController {
 			int x = Integer.parseInt(target);
 			if(isIndexAllowed(x) && gameCont.placeToken(x)){
 				if(gameCont.isMill(x, gameCont.getCurrPlayer())){
-					status = "steal";
+					status = STEAL;
 					message = "Sie haben eine Mühle.";
 					return;
 				} else {
 					gameCont.nextPlayer();
 					message = "Stein erfolgreich gesetzt.";
 					if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
-						status = "move";
+						status = MOVE;
 						message = "Stein erfolgreich gesetzt, Setzphase beendet";
 					}
 					return;
@@ -53,13 +57,13 @@ public class TurnController implements ITurnController {
 			int y = Integer.parseInt(target);
 			
 			if(!gameCont.isMoveAllowed()){
-				status = "lose";
+				status = LOSE;
 				return;
 			} else if(isIndexAllowed(x) && isIndexAllowed(y) && gameCont.moveToken(x, y)) {
 				
 				
 				if(gameCont.isMill(y, gameCont.getCurrPlayer())){
-					status = "steal";
+					status = STEAL;
 					message = "Sie haben eine Mühle.";
 					return;
 				} else {
@@ -88,10 +92,10 @@ public class TurnController implements ITurnController {
 				gameCont.nextPlayer();
 				
 				if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
-					status = "move";
+					status = MOVE;
 					return;
 				}
-				status = "place";
+				status = PLACE;
 				return;
 			} else if(isIndexAllowed(x) && gameCont.stealToken(x)) {
 				message = "Stein wurde geklaut";
@@ -99,14 +103,14 @@ public class TurnController implements ITurnController {
 				
 				
 				if(gameCont.getCurrPlayer().getTokenCount() == 2 && gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
-					status = "lose";
+					status = LOSE;
 					return;
 				}
 				if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
-					status = "move";
+					status = MOVE;
 					return;
 				}
-				status = "place";
+				status = PLACE;
 				return;
 			} else {
 				message = "Kein stehlbarer Stein an dieser Stelle.";
@@ -133,11 +137,11 @@ public class TurnController implements ITurnController {
 	public String nextInstruction(){
 		String stat = getStatus();
 		switch(stat){
-		case "place":
+		case PLACE:
 			return gameCont.getCurrPlayer().getName() + ": Setzen sie einen Stein.";
-		case "move":
+		case MOVE:
 			return gameCont.getCurrPlayer().getName() + ": Bewegen sie einen Stein.";
-		case "steal":
+		case STEAL:
 			return gameCont.getCurrPlayer().getName() + ": Stehlen sie einen Stein.";
 		default:
 			return gameCont.getCurrPlayer().getName() + ": Sie haben verloren.";

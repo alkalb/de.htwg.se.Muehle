@@ -18,6 +18,14 @@ import de.htwg.se.Muehle.Model.IPlayer;
 public class GraphicalUserInterface extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
+	private static final int BOARDCOORD1 = 27;
+	private static final int BOARDCOORD2 = 96;
+	private static final int BOARDCOORD3 = 166;
+	private static final int BOARDCOORD4 = 231;
+	private static final int BOARDCOORD5 = 296;
+	private static final int BOARDCOORD6 = 366;
+	private static final int BOARDCOORD7 = 436;
+	private static final int TOKENWIDTH = 38;
 	
 	private IPlayer playerOne, playerTwo;
 	private IBoard board;
@@ -33,9 +41,9 @@ public class GraphicalUserInterface extends JFrame implements ActionListener{
 	private static final int YINFOS = 200;
 	private static final int SIDEBARTHREE = 3;
 	
-	private final ImageIcon BLACK = new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif"));
-	private final ImageIcon WHITE = new ImageIcon(getClass().getResource("/de/htwg/se/resources/white.gif"));
-	private final ImageIcon EMPTY = new ImageIcon(getClass().getResource("/de/htwg/se/resources/blank.png"));
+	private final ImageIcon black = new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif"));
+	private final ImageIcon white = new ImageIcon(getClass().getResource("/de/htwg/se/resources/white.gif"));
+	private final ImageIcon empty = new ImageIcon(getClass().getResource("/de/htwg/se/resources/blank.png"));
 	
 	public GraphicalUserInterface(IGameController gc, ITurnController tc){
 		
@@ -113,100 +121,100 @@ public class GraphicalUserInterface extends JFrame implements ActionListener{
 		
 		
 		pos0 = new JLabel();
-		pos0.setIcon(EMPTY);
-		pos0.setBounds(27, 435, 38, 38);
+		pos0.setIcon(empty);
+		pos0.setBounds(BOARDCOORD1, BOARDCOORD7, TOKENWIDTH, TOKENWIDTH);
 		
 		pos1 = new JLabel();
-		pos1.setIcon(EMPTY);
-		pos1.setBounds(231, 435, 38, 38);
+		pos1.setIcon(empty);
+		pos1.setBounds(BOARDCOORD4, BOARDCOORD7, TOKENWIDTH, TOKENWIDTH);
 		
 		pos2 = new JLabel();
-		pos2.setIcon(EMPTY);
-		pos2.setBounds(436, 436, 38, 38);
+		pos2.setIcon(empty);
+		pos2.setBounds(BOARDCOORD7, BOARDCOORD7, TOKENWIDTH, TOKENWIDTH);
 		
 		pos3 = new JLabel();
-		pos3.setIcon(EMPTY);
-		pos3.setBounds(436, 231, 38, 38);
+		pos3.setIcon(empty);
+		pos3.setBounds(BOARDCOORD7, BOARDCOORD4, TOKENWIDTH, TOKENWIDTH);
 
 		pos4 = new JLabel();
-		pos4.setIcon(EMPTY);
-		pos4.setBounds(436, 26, 38, 38);
+		pos4.setIcon(empty);
+		pos4.setBounds(BOARDCOORD7, BOARDCOORD1, TOKENWIDTH, TOKENWIDTH);
 
 		pos5 = new JLabel();
-		pos5.setIcon(EMPTY);
-		pos5.setBounds(231, 26, 38, 38);
+		pos5.setIcon(empty);
+		pos5.setBounds(BOARDCOORD4, BOARDCOORD1, TOKENWIDTH, TOKENWIDTH);
 		
 		pos6 = new JLabel();
-		pos6.setIcon(EMPTY);
-		pos6.setBounds(27, 27, 38, 38);
+		pos6.setIcon(empty);
+		pos6.setBounds(BOARDCOORD1, BOARDCOORD1, TOKENWIDTH, TOKENWIDTH);
 		
 		pos7 = new JLabel();
-		pos7.setIcon(EMPTY);
-		pos7.setBounds(27, 235, 38, 38);
+		pos7.setIcon(empty);
+		pos7.setBounds(BOARDCOORD1, BOARDCOORD4, TOKENWIDTH, TOKENWIDTH);
 		
 		pos8 = new JLabel();
-		pos8.setIcon(EMPTY);
-		pos8.setBounds(96, 366, 38, 38);
+		pos8.setIcon(empty);
+		pos8.setBounds(BOARDCOORD2, BOARDCOORD6, TOKENWIDTH, TOKENWIDTH);
 		
 		pos9 = new JLabel();
-		pos9.setIcon(EMPTY);
-		pos9.setBounds(231, 366, 38, 38);
+		pos9.setIcon(empty);
+		pos9.setBounds(BOARDCOORD4, BOARDCOORD6, TOKENWIDTH, TOKENWIDTH);
 		
 		pos10 = new JLabel();
-		pos10.setIcon(EMPTY);
-		pos10.setBounds(366, 366, 38, 38);
+		pos10.setIcon(empty);
+		pos10.setBounds(BOARDCOORD6, BOARDCOORD6, TOKENWIDTH, TOKENWIDTH);
 
 		pos11 = new JLabel();
-		pos11.setIcon(EMPTY);
-		pos11.setBounds(366, 231, 38, 38);
+		pos11.setIcon(empty);
+		pos11.setBounds(BOARDCOORD6, BOARDCOORD4, TOKENWIDTH, TOKENWIDTH);
 
 		pos12 = new JLabel();
-		pos12.setIcon(EMPTY);
-		pos12.setBounds(366, 96, 38, 38);
+		pos12.setIcon(empty);
+		pos12.setBounds(BOARDCOORD6, BOARDCOORD2, TOKENWIDTH, TOKENWIDTH);
 
 		pos13 = new JLabel();
-		pos13.setIcon(EMPTY);
-		pos13.setBounds(231, 96, 38, 38);
+		pos13.setIcon(empty);
+		pos13.setBounds(BOARDCOORD4, BOARDCOORD2, TOKENWIDTH, TOKENWIDTH);
 		
 		pos14 = new JLabel();
-		pos14.setIcon(EMPTY);
-		pos14.setBounds(96, 96, 38, 38);
+		pos14.setIcon(empty);
+		pos14.setBounds(BOARDCOORD2, BOARDCOORD2, TOKENWIDTH, TOKENWIDTH);
 		
 		pos15 = new JLabel();
-		pos15.setIcon(EMPTY);
-		pos15.setBounds(96, 231, 38, 38);
+		pos15.setIcon(empty);
+		pos15.setBounds(BOARDCOORD2, BOARDCOORD4, TOKENWIDTH, TOKENWIDTH);
 		
 		pos16 = new JLabel();
-		pos16.setIcon(EMPTY);
-		pos16.setBounds(166, 296, 38, 38);
+		pos16.setIcon(empty);
+		pos16.setBounds(BOARDCOORD3, BOARDCOORD5, TOKENWIDTH, TOKENWIDTH);
 		
 		pos17 = new JLabel();
-		pos17.setIcon(EMPTY);
-		pos17.setBounds(231, 296, 38, 38);
+		pos17.setIcon(empty);
+		pos17.setBounds(BOARDCOORD4, BOARDCOORD5, TOKENWIDTH, TOKENWIDTH);
 		
 		pos18 = new JLabel();
-		pos18.setIcon(EMPTY);
-		pos18.setBounds(296, 296, 38, 38);
+		pos18.setIcon(empty);
+		pos18.setBounds(BOARDCOORD5, BOARDCOORD5, TOKENWIDTH, TOKENWIDTH);
 
 		pos19 = new JLabel();
-		pos19.setIcon(EMPTY);
-		pos19.setBounds(296, 231, 38, 38);
+		pos19.setIcon(empty);
+		pos19.setBounds(BOARDCOORD5, BOARDCOORD4, TOKENWIDTH, TOKENWIDTH);
 
 		pos20 = new JLabel();
-		pos20.setIcon(EMPTY);
-		pos20.setBounds(296, 166, 38, 38);
+		pos20.setIcon(empty);
+		pos20.setBounds(BOARDCOORD5, BOARDCOORD3, TOKENWIDTH, TOKENWIDTH);
 
 		pos21 = new JLabel();
-		pos21.setIcon(EMPTY);
-		pos21.setBounds(231, 166, 38, 38);
+		pos21.setIcon(empty);
+		pos21.setBounds(BOARDCOORD4, BOARDCOORD3, TOKENWIDTH, TOKENWIDTH);
 		
 		pos22 = new JLabel();
-		pos22.setIcon(EMPTY);
-		pos22.setBounds(166, 166, 38, 38);
+		pos22.setIcon(empty);
+		pos22.setBounds(BOARDCOORD3, BOARDCOORD3, TOKENWIDTH, TOKENWIDTH);
 		
 		pos23 = new JLabel();
-		pos23.setIcon(EMPTY);
-		pos23.setBounds(166, 231, 38, 38);
+		pos23.setIcon(empty);
+		pos23.setBounds(BOARDCOORD3, BOARDCOORD4, TOKENWIDTH, TOKENWIDTH);
 		
 		posList.put(0, pos0);
 		posList.put(1, pos1);
@@ -291,31 +299,30 @@ public class GraphicalUserInterface extends JFrame implements ActionListener{
 		for(int i = 0; i<fields.length; i++){
 			IPlayer temp = fields[i].getPlayerOfField();
 			if(temp.getName().equals("error")){
-				posList.get(i).setIcon(EMPTY);
+				posList.get(i).setIcon(empty);
 			} else if(temp.getColor().equals("B")){
-				posList.get(i).setIcon(BLACK);
+				posList.get(i).setIcon(black);
 			} else {
-				posList.get(i).setIcon(WHITE);
+				posList.get(i).setIcon(white);
 			}
 		}
 		
 		message.setText(tuCon.getMessage() + " " + tuCon.nextInstruction());
-		player1tokens.setText(new Integer(playerOne.getPlaceableTokenCount()).toString());
-		player2tokens.setText(new Integer(playerTwo.getPlaceableTokenCount()).toString());
+		player1tokens.setText(Integer.valueOf(playerOne.getPlaceableTokenCount()).toString());
+		player2tokens.setText(Integer.valueOf(playerTwo.getPlaceableTokenCount()).toString());
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
-		if(source == help){
+		if(source.equals(help)){
 			showHelp();
 			
-		} else if(source == restart){
+		} else if(source.equals(restart)){
 			message.setText("restart");
 		} else {
 			sendInput();
 		}
-		
 	}
 	
 	public void sendInput(){
