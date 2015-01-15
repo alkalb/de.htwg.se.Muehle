@@ -5,8 +5,10 @@ import de.htwg.se.Muehle.Controller.ITurnController;
 import de.htwg.se.Muehle.Model.IBoard;
 import de.htwg.se.Muehle.Model.IField;
 import de.htwg.se.Muehle.Model.IPlayer;
+import de.htwg.se.Muehle.Util.Event;
+import de.htwg.se.Muehle.Util.IObserver;
 
-public class TextualUserInterface {
+public class TextualUserInterface implements IObserver{
 	private IBoard board;
 	private IPlayer curr, opp;
 	private ITurnController tuCon;
@@ -41,6 +43,7 @@ public class TextualUserInterface {
 		opp = gc.getOppPlayer();
 		board = gc.getBoard();
 		tuCon = tc;
+		tuCon.addObserver(this);
 	}
 	
 	public void showHelp(){
@@ -128,5 +131,10 @@ public class TextualUserInterface {
 				break;
 			}
 		}	
+	}
+
+	@Override
+	public void update(Event e) {
+		showGame();
 	}
 }

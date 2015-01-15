@@ -2,9 +2,12 @@ package de.htwg.se.Muehle.Controller.Impl;
 
 import de.htwg.se.Muehle.Controller.ITurnController;
 import de.htwg.se.Muehle.Controller.IGameController;
+import de.htwg.se.Muehle.Util.Event;
+import de.htwg.se.Muehle.Util.IObserver;
+import de.htwg.se.Muehle.Util.Impl.Observable;
 
 
-public class TurnController implements ITurnController {
+public class TurnController extends Observable implements ITurnController{
 	
 	private IGameController gameCont;
 	private String status;
@@ -31,6 +34,7 @@ public class TurnController implements ITurnController {
 				if(gameCont.isMill(x, gameCont.getCurrPlayer())){
 					status = STEAL;
 					message = "Sie haben eine Mühle.";
+					notifyObservers();
 					return;
 				} else {
 					gameCont.nextPlayer();
@@ -39,14 +43,17 @@ public class TurnController implements ITurnController {
 						status = MOVE;
 						message = "Stein erfolgreich gesetzt, Setzphase beendet";
 					}
+					notifyObservers();
 					return;
 				}
 			} else {
 				message = "Ungültiges Feld zum platzieren angegeben, bitte Spielfeld beachten.";
+				notifyObservers();
 				return;
 			}
 		} catch(NumberFormatException e) {
 			message = "Bitte Zahl zwischen 0 und 23 angeben.";
+			notifyObservers();
 		}
 	}
 
@@ -58,6 +65,7 @@ public class TurnController implements ITurnController {
 			
 			if(!gameCont.isMoveAllowed()){
 				status = LOSE;
+				notifyObservers();
 				return;
 			} else if(isIndexAllowed(x) && isIndexAllowed(y) && gameCont.moveToken(x, y)) {
 				
@@ -65,10 +73,12 @@ public class TurnController implements ITurnController {
 				if(gameCont.isMill(y, gameCont.getCurrPlayer())){
 					status = STEAL;
 					message = "Sie haben eine Mühle.";
+					notifyObservers();
 					return;
 				} else {
 					gameCont.nextPlayer();
 					message = "Stein erfolgreich gesetzt.";
+					notifyObservers();
 					return;
 				}
 				
@@ -76,10 +86,12 @@ public class TurnController implements ITurnController {
 				
 			} else {
 				message = "Zug nicht möglich, bitte Spielfeld beachten.";
+				notifyObservers();
 				return;
 			}
 		} catch(NumberFormatException e){
 			message = "Bitte 2 Zahlen zwischen 0 und 23 angeben.";
+			notifyObservers();
 		}
 	}
   
@@ -93,9 +105,11 @@ public class TurnController implements ITurnController {
 				
 				if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
 					status = MOVE;
+					notifyObservers();
 					return;
 				}
 				status = PLACE;
+				notifyObservers();
 				return;
 			} else if(isIndexAllowed(x) && gameCont.stealToken(x)) {
 				message = "Stein wurde geklaut";
@@ -104,21 +118,26 @@ public class TurnController implements ITurnController {
 				
 				if(gameCont.getCurrPlayer().getTokenCount() == 2 && gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
 					status = LOSE;
+					notifyObservers();
 					return;
 				}
 				if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
 					status = MOVE;
+					notifyObservers();
 					return;
 				}
 				status = PLACE;
+				notifyObservers();
 				return;
 			} else {
 				message = "Kein stehlbarer Stein an dieser Stelle.";
+				notifyObservers();
 				return;
 			}
 			
 		} catch(NumberFormatException e){
 			message = "Bitte Zahl zwischen 0 und 23 angeben.";
+			notifyObservers();
 		}
 	}
 
@@ -147,5 +166,4 @@ public class TurnController implements ITurnController {
 			return gameCont.getCurrPlayer().getName() + ": Sie haben verloren.";
 		}
 	}
-	
 }

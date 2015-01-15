@@ -1,6 +1,8 @@
 package de.htwg.se.Muehle.Controller;
 
-public interface ITurnController {
+import de.htwg.se.Muehle.Util.IObservable;
+
+public interface ITurnController extends IObservable{
 	
 	void place(String target);
 	
@@ -11,8 +13,6 @@ public interface ITurnController {
 	String getMessage();
 	
 	String getStatus();
+	
 	String nextInstruction();
-	
-	
-
 }

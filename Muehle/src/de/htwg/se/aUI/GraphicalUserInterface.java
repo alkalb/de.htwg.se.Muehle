@@ -14,8 +14,10 @@ import de.htwg.se.Muehle.Controller.ITurnController;
 import de.htwg.se.Muehle.Model.IBoard;
 import de.htwg.se.Muehle.Model.IField;
 import de.htwg.se.Muehle.Model.IPlayer;
+import de.htwg.se.Muehle.Util.Event;
+import de.htwg.se.Muehle.Util.IObserver;
 
-public class GraphicalUserInterface extends JFrame implements ActionListener{
+public class GraphicalUserInterface extends JFrame implements ActionListener, IObserver{
 	
 	private static final long serialVersionUID = 1L;
 	private static final int BOARDCOORD1 = 27;
@@ -51,6 +53,7 @@ public class GraphicalUserInterface extends JFrame implements ActionListener{
 		playerTwo = gc.getOppPlayer();
 		board = gc.getBoard();
 		tuCon = tc;
+		tuCon.addObserver(this);
 		posList = new HashMap<Integer, JLabel>();
 		
 		this.setTitle("Mühle");
@@ -347,6 +350,11 @@ public class GraphicalUserInterface extends JFrame implements ActionListener{
 		case "lose":
 			break;
 		}
+	}
+
+	@Override
+	public void update(Event e) {
+		showGame();
 	}
 	
 
