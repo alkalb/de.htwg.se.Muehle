@@ -1,5 +1,6 @@
 package de.htwg.se.aUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -38,13 +39,12 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 	private IBoard board;
 	private ITurnController tuCon;
 	
-	private JLabel header, player1, player2, message, sourceLabel, targetLabel, player1tokens, player2tokens, blank, boardbg, positions;
+	private JLabel header, player1, player2, sourceLabel, targetLabel, player1tokens, player2tokens, boardbg, positions;
 	private Map<Integer, JLabel> posList;
 	private JTextField source, target;
+	private JTextArea message;
 	private JButton restart, help,submit;
-	private JPanel main, boardP, infos, commands, buttons, sidebar;
-	private static final int XINFOS = 150;
-	private static final int YINFOS = 200;
+	private JPanel main, boardP, sidebar;
 	private static final int SIDEBARTHREE = 3;
 	
 	private final ImageIcon black = new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif"));
@@ -66,19 +66,18 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		header = new JLabel("Setzbare Spielsteine");
 		player1 = new JLabel("Spieler 1:");
 		player2 = new JLabel("Spieler 2:");
-		message = new JLabel("");
+		message = new JTextArea("");
 		positions = new JLabel();
-		positions.setPreferredSize(new Dimension(230, 230));
 		sourceLabel = new JLabel("Start");
 		targetLabel = new JLabel("Ziel");
 		player1tokens = new JLabel("9");
 		player2tokens = new JLabel("9");
-		blank = new JLabel();
 		boardbg = new JLabel();
 			
 		
-		source = new JTextField("", 2);
-		target = new JTextField("", 2);
+		source = new JTextField("");
+		target = new JTextField("");
+		source.setEditable(false);
 		
 		restart = new JButton("Neustart");
 		restart.addActionListener(this);
@@ -87,44 +86,40 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		submit = new JButton("Senden");
 		submit.addActionListener(this);
 		
-		buttons = new JPanel();
-		buttons.setLayout(new BoxLayout(buttons, BoxLayout.X_AXIS));
-		buttons.add(restart);
-		buttons.add(help);
-		
-		commands = new JPanel();
-		commands.setLayout(new GridLayout(SIDEBARTHREE, 2));
-		commands.add(sourceLabel);
-		commands.add(targetLabel);
-		commands.add(source);
-		commands.add(target);
-		commands.add(submit);
-		commands.add(blank);
-		
-		header.setBounds(500, 500, 200, 30);
-		infos = new JPanel();
-		infos.setLayout(new GridLayout(SIDEBARTHREE,2));
-		infos.setPreferredSize(new Dimension(XINFOS, YINFOS));
-		infos.add(header);
-		infos.add(blank);
-		infos.add(player1);
-		infos.add(player1tokens);
-		infos.add(player2);
-		infos.add(player2tokens);
-		
-		
 		sidebar = new JPanel();
-		sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
-		sidebar.add(infos);
-		sidebar.add(message);
-		sidebar.add(commands);
-		JPanel pos = new JPanel();
-		pos.setLayout(new GridLayout(1, 1));
+		sidebar.setLayout(null);
 		positions.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/positions.PNG")));
-		pos.add(positions);
-		sidebar.add(pos);
-		sidebar.add(buttons);
-		sidebar.setPreferredSize(new Dimension(200, GAMEYLENGTH));
+		positions.setBounds(0, 0, 163, 198);
+		header.setBounds(0, 200, 200, 20);
+		player1.setBounds(0, 220, 100, 20);
+		player2.setBounds(0, 240, 100, 20);
+		player1tokens.setBounds(120, 220, 50, 20);
+		player2tokens.setBounds(120, 240, 50, 20);
+		sourceLabel.setBounds(0, 270, 100, 20);
+		targetLabel.setBounds(100, 270, 100, 20);
+		source.setBounds(0, 290, 90, 25);
+		target.setBounds(100, 290, 90, 25);
+		submit.setBounds(50, 320, 100, 25);
+		message.setBounds(0, 345, 250, 125);
+		help.setBounds(0, 470, 90, 30);
+		restart.setBounds(100, 470, 90, 30);
+		message.setEditable(false);
+		
+		sidebar.add(header);
+		sidebar.add(player1);
+		sidebar.add(player2);
+		sidebar.add(player1tokens);
+		sidebar.add(player2tokens);
+		sidebar.add(sourceLabel);
+		sidebar.add(targetLabel);
+		sidebar.add(source);
+		sidebar.add(target);
+		sidebar.add(submit);
+		sidebar.add(message);
+		sidebar.add(help);
+		sidebar.add(restart);
+		sidebar.add(positions);
+		sidebar.setPreferredSize(new Dimension(250, GAMEYLENGTH));
 		
 		
 		JLabel pos0 = new JLabel();
@@ -282,10 +277,12 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		
 		main = new JPanel();
 		main.setLayout(new BoxLayout(main, BoxLayout.X_AXIS));
+		boardP.setBackground(Color.WHITE);
+		sidebar.setBackground(Color.WHITE);
 		main.add(boardP);
 		main.add(sidebar);
-		main.setPreferredSize(new Dimension(750, GAMEYLENGTH));
-		
+		main.setPreferredSize(new Dimension(800, GAMEYLENGTH));
+		message.setText(tuCon.getMessage() + "\n" + tuCon.nextInstruction());
 		
 		
 		this.add(main);
@@ -315,12 +312,18 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 			}
 		}
 		
-		message.setText(tuCon.getMessage() + " " + tuCon.nextInstruction());
+		message.setText(tuCon.getMessage() + "\n" + tuCon.nextInstruction());
 		player1tokens.setText(Integer.valueOf(playerOne.getPlaceableTokenCount()).toString());
 		player2tokens.setText(Integer.valueOf(playerTwo.getPlaceableTokenCount()).toString());
 		
-		switch(tuCon.getStatus()){
-		
+		if(tuCon.getStatus().equals("move")){
+			source.setEditable(true);
+		} else if(tuCon.getStatus().equals("lose")){
+			source.setEditable(false);
+			target.setEditable(false);
+			submit.setEnabled(false);
+		} else {
+			source.setEditable(false);
 		}
 		
 	}
@@ -332,7 +335,7 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 			showHelp();
 			
 		} else if(source.equals(restart)){
-			message.setText("restart");
+			message.setText("restart\n restart");
 		} else {
 			sendInput();
 		}

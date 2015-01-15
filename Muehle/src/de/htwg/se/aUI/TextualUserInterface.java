@@ -50,7 +50,7 @@ public class TextualUserInterface implements IObserver{
 		print("/restart Startet das Spiel neu.\n"
 				+ "/exit Beendet das Spiel.\n"
 				+ "/help Zeigt diese Hilfe.\n"
-				+ "Eingabemuster Spielsteine platzieren/Stehlen: Zahl; Eingabemuster Spielstein bewegen: Zahl/Zahl");
+				+ "Eingabemuster Spielsteine platzieren/Stehlen: Zahl\nEingabemuster Spielstein bewegen: Zahl/Zahl");
 	}
 
 	public void showGame(){

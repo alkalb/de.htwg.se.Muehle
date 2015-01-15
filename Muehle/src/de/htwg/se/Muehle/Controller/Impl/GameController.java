@@ -23,6 +23,12 @@ public class GameController implements IGameController {
 	private static final int TOKENAMOUNTFORJUMP = 3;
 	private static final int STEALABLECHECK = 3;
 	
+	
+	
+	
+	
+	
+	
 	public GameController(IPlayer p1, IPlayer p2) {
 		error = new Player("error", Color.MAGENTA);
 		

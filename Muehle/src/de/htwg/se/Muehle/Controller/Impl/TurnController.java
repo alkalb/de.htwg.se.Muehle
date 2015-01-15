@@ -40,13 +40,13 @@ public class TurnController extends Observable implements ITurnController{
 					message = "Stein erfolgreich gesetzt.";
 					if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
 						status = MOVE;
-						message = "Stein erfolgreich gesetzt, Setzphase beendet";
+						message = "Stein erfolgreich gesetzt,\nSetzphase beendet";
 					}
 					notifyObservers();
 					return;
 				}
 			} else {
-				message = "Ungültiges Feld zum platzieren angegeben, bitte Spielfeld beachten.";
+				message = "Ungültiges Feld zum platzieren angegeben,\nbitte Spielfeld beachten.";
 				notifyObservers();
 				return;
 			}
