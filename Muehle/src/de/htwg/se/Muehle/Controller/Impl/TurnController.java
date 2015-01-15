@@ -76,7 +76,7 @@ public class TurnController extends Observable implements ITurnController{
 					return;
 				} else {
 					gameCont.nextPlayer();
-					message = "Stein erfolgreich gesetzt.";
+					message = "Der Stein wurde erfolgreich gesetzt.";
 					notifyObservers();
 					return;
 				}
