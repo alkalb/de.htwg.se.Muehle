@@ -35,7 +35,7 @@ public class GraphicalUserInterface extends JFrame implements ActionListener{
 	
 	private final ImageIcon BLACK = new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif"));
 	private final ImageIcon WHITE = new ImageIcon(getClass().getResource("/de/htwg/se/resources/white.gif"));
-	private final ImageIcon EMPTY = new ImageIcon(getClass().getResource("/de/htwg/se/resources/white.gif"));
+	private final ImageIcon EMPTY = new ImageIcon(getClass().getResource("/de/htwg/se/resources/blank.png"));
 	
 	public GraphicalUserInterface(IGameController gc, ITurnController tc){
 		
