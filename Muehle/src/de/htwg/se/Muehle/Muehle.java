@@ -3,6 +3,8 @@ package de.htwg.se.Muehle;
 import java.awt.Color;
 import java.util.Scanner;
 
+import org.apache.log4j.PropertyConfigurator;
+
 import de.htwg.se.Muehle.Controller.IGameController;
 import de.htwg.se.Muehle.Controller.ITurnController;
 import de.htwg.se.Muehle.Controller.Impl.GameController;
@@ -18,6 +20,8 @@ public final class Muehle {
 	
 	public static void main(String[] args) {
 
+		PropertyConfigurator.configure("log4j.properties");
+		
 		IPlayer p1 = new Player("Spieler 1", Color.BLACK);
 		IPlayer p2 = new Player("Spieler 2", Color.WHITE);
 		IGameController gaCo = new GameController(p1, p2);

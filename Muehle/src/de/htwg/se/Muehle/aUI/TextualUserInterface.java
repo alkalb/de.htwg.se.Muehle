@@ -1,5 +1,7 @@
 package de.htwg.se.Muehle.aUI;
 
+import org.apache.log4j.Logger;
+
 import de.htwg.se.Muehle.Controller.IGameController;
 import de.htwg.se.Muehle.Controller.ITurnController;
 import de.htwg.se.Muehle.Model.IBoard;
@@ -38,6 +40,8 @@ public class TextualUserInterface implements IObserver{
 	private static final int TWENTYTHREE = 23;
 	private static final int SIZE = 24;
 	
+	private Logger logger = Logger.getLogger("de.htwg.se.Muehle.aUI");
+	
 	public TextualUserInterface(IGameController gc, ITurnController tc){
 		curr = gc.getCurrPlayer();
 		opp = gc.getOppPlayer();
@@ -62,31 +66,26 @@ public class TextualUserInterface implements IObserver{
 			output[i] = fields[i].getFieldColor();
 		}		
 		
-		System.out.printf("\n6----------5---------4 \t\t%s---------%s---------%s\n" +
-				  "|          |         | \t\t|         |         |\n" +
-				  "|  14-----13-----12  | \t\t|  %s------%s------%s  |			Setzbare Spielsteine Spieler1: " + curr.getPlaceableTokenCount() + "\n" +
-				  "|  |       |      |  | \t\t|  |      |      |  |\n" +
-				  "|  |  22---21--20 |  | \t\t|  |  %s---%s---%s  |  |			Setzbare Spielsteine Spieler2: " + opp.getPlaceableTokenCount() + "\n" +
-				  "|  |   |       |  |  | \t\t|  |  |       |  |  |\n" +
-				  "7--15--23      19-11-3 \t\t%s--%s--%s       %s--%s--%s\n" +
-				  "|  |   |       |  |  | \t\t|  |  |       |  |  |\n" +
-				  "|  |  16---17--18 |  | \t\t|  |  %s---%s---%s  |  |\n" +
-				  "|  |       |      |  | \t\t|  |      |      |  |\n" +
-				  "|  8-------9------10 | \t\t|  %s------%s------%s  |\n" +
-				  "|          |         | \t\t|         |         |\n" +
-				  "0----------1---------2 \t\t%s---------%s---------%s\n", output[SIX], output[FIVE], output[FOUR], output[FOURTEEN],
-			  output[THIRTEEN], output[TWELVE], output[TWENTYTWO], output[TWENTYONE], output[TWENTY],
-			  output[SEVEN], output[FIFTEEN],  output[TWENTYTHREE], output[NINETEEN],
-			  output[ELEVEN], output[THREE], output[SIXTEEN], output[SEVENTEEN],
-			  output[EIGHTTEEN], output[EIGHT],  output[NINE], output[TEN], output[ZERO], output[ONE],
-			  output[TWO]);
+		logger.info("6----------5---------4 \t\t" + output[SIX] + "---------" + output[FIVE] + "---------" + output[FOUR]);
+		logger.info("|          |         | \t\t|         |         |");
+		logger.info("|  14-----13-----12  | \t\t|  " + output[FOURTEEN] + "------" + output[THIRTEEN] + "------" + output[TWELVE] + "  |			Setzbare Spielsteine Spieler1: " + curr.getPlaceableTokenCount());
+		logger.info("|  |       |      |  | \t\t|  |      |      |  |");
+		logger.info("|  |  22---21--20 |  | \t\t|  |  " + output[TWENTYTWO] + "---" + output[TWENTYONE] + "---" + output[TWENTY] + "  |  |			Setzbare Spielsteine Spieler2: " + opp.getPlaceableTokenCount());
+		logger.info("|  |   |       |  |  | \t\t|  |  |       |  |  |");
+		logger.info("7--15--23      19-11-3 \t\t" + output[SEVEN] + "--" + output[FIFTEEN] + "--" + output[TWENTYTHREE] + "       " + output[NINETEEN] + "--" + output[ELEVEN] + "--" + output[THREE]);
+		logger.info("|  |   |       |  |  | \t\t|  |  |       |  |  |");
+		logger.info("|  |  16---17--18 |  | \t\t|  |  " + output[SIXTEEN] + "---" + output[SEVENTEEN] + "---" + output[EIGHTTEEN] + "  |  |");
+		logger.info("|  |       |      |  | \t\t|  |      |      |  |");
+		logger.info("|  8-------9------10 | \t\t|  " + output[EIGHT] + "------" + output[NINE] + "------" + output[TEN] + "  |");
+		logger.info("|          |         | \t\t|         |         |");
+		logger.info("0----------1---------2 \t\t" + output[ZERO] + "---------" + output[ONE] + "---------" + output[TWO]);
 		
 		print(tuCon.getMessage());
 		print(tuCon.nextInstruction());
 	}
 	
 	private void print(String s){
-		System.out.println(s);
+		logger.info(s);
 	}
 
 	public void sendInput(String next) {
