@@ -35,7 +35,7 @@ public class GraphicalUserInterface extends JFrame implements ActionListener{
 	
 	private final ImageIcon BLACK = new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif"));
 	private final ImageIcon WHITE = new ImageIcon(getClass().getResource("/de/htwg/se/resources/white.gif"));
-	private final ImageIcon EMPTY = new ImageIcon(getClass().getResource("/de/htwg/se/resources/black2.gif"));
+	private final ImageIcon EMPTY = new ImageIcon(getClass().getResource("/de/htwg/se/resources/white.gif"));
 	
 	public GraphicalUserInterface(IGameController gc, ITurnController tc){
 		
@@ -288,7 +288,7 @@ public class GraphicalUserInterface extends JFrame implements ActionListener{
 	
 	public void showGame(){
 		IField[] fields = board.getFields();
-		for(int i = 0; i<=fields.length; i++){
+		for(int i = 0; i<fields.length; i++){
 			IPlayer temp = fields[i].getPlayerOfField();
 			if(temp.getName().equals("error")){
 				posList.get(i).setIcon(EMPTY);
@@ -313,7 +313,7 @@ public class GraphicalUserInterface extends JFrame implements ActionListener{
 		} else if(source == restart){
 			message.setText("restart");
 		} else {
-			message.setText("TODO");
+			sendInput();
 		}
 		
 	}
@@ -330,19 +330,14 @@ public class GraphicalUserInterface extends JFrame implements ActionListener{
 
 			tuCon.move(source.getText(), target.getText());
 			showGame();
-			print(tuCon.getMessage());
-			print(tuCon.nextInstruction());
 			break;
 
 		case "steal":
-			tuCon.steal(next);
+			tuCon.steal(target.getText());
 			showGame();
-			print(tuCon.getMessage());
-			print(tuCon.nextInstruction());
 			break;
 
 		case "lose":
-			//restart
 			break;
 		}
 	}
