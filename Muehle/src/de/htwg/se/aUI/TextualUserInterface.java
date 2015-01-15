@@ -47,10 +47,10 @@ public class TextualUserInterface implements IObserver{
 	}
 	
 	public void showHelp(){
-		print("/restart Restarts the game\n"
-				+ "/exit Exits the game\n"
-				+ "/help Shows this text\n"
-				+ "steal and place as single number, move as number/number");
+		print("/restart Startet das Spiel neu.\n"
+				+ "/exit Beendet das Spiel.\n"
+				+ "/help Zeigt diese Hilfe.\n"
+				+ "Eingabemuster Spielsteine platzieren/Stehlen: Zahl; Eingabemuster Spielstein bewegen: Zahl/Zahl");
 	}
 
 	public void showGame(){
@@ -64,9 +64,9 @@ public class TextualUserInterface implements IObserver{
 		
 		System.out.printf("\n6----------5---------4 \t\t%s---------%s---------%s\n" +
 				  "|          |         | \t\t|         |         |\n" +
-				  "|  14-----13-----12  | \t\t|  %s------%s------%s  |			Platzierbare Tokens Spieler1: " + curr.getPlaceableTokenCount() + "\n" +
+				  "|  14-----13-----12  | \t\t|  %s------%s------%s  |			Setzbare Spielsteine Spieler1: " + curr.getPlaceableTokenCount() + "\n" +
 				  "|  |       |      |  | \t\t|  |      |      |  |\n" +
-				  "|  |  22---21--20 |  | \t\t|  |  %s---%s---%s  |  |			Platzierbare Tokens Spieler2: " + opp.getPlaceableTokenCount() + "\n" +
+				  "|  |  22---21--20 |  | \t\t|  |  %s---%s---%s  |  |			Setzbare Spielsteine Spieler2: " + opp.getPlaceableTokenCount() + "\n" +
 				  "|  |   |       |  |  | \t\t|  |  |       |  |  |\n" +
 				  "7--15--23      19-11-3 \t\t%s--%s--%s       %s--%s--%s\n" +
 				  "|  |   |       |  |  | \t\t|  |  |       |  |  |\n" +
@@ -80,6 +80,9 @@ public class TextualUserInterface implements IObserver{
 			  output[ELEVEN], output[THREE], output[SIXTEEN], output[SEVENTEEN],
 			  output[EIGHTTEEN], output[EIGHT],  output[NINE], output[TEN], output[ZERO], output[ONE],
 			  output[TWO]);
+		
+		print(tuCon.getMessage());
+		print(tuCon.nextInstruction());
 	}
 	
 	private void print(String s){
@@ -101,8 +104,6 @@ public class TextualUserInterface implements IObserver{
 			case "place":
 				tuCon.place(next);
 				showGame();
-				print(tuCon.getMessage());
-				print(tuCon.nextInstruction());
 				break;
 				
 			case "move":
@@ -115,15 +116,11 @@ public class TextualUserInterface implements IObserver{
 				}
 				tuCon.move(temp[0], temp[1]);
 				showGame();
-				print(tuCon.getMessage());
-				print(tuCon.nextInstruction());
 				break;
 
 			case "steal":
 				tuCon.steal(next);
 				showGame();
-				print(tuCon.getMessage());
-				print(tuCon.nextInstruction());
 				break;
 
 			case "lose":

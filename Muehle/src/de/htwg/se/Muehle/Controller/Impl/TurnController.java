@@ -2,8 +2,6 @@ package de.htwg.se.Muehle.Controller.Impl;
 
 import de.htwg.se.Muehle.Controller.ITurnController;
 import de.htwg.se.Muehle.Controller.IGameController;
-import de.htwg.se.Muehle.Util.Event;
-import de.htwg.se.Muehle.Util.IObserver;
 import de.htwg.se.Muehle.Util.Impl.Observable;
 
 
@@ -22,6 +20,7 @@ public class TurnController extends Observable implements ITurnController{
 	public TurnController(IGameController gc){
 		gameCont = gc;
 		status = PLACE;
+		message = "Spielstart";
 	}
 	
 	

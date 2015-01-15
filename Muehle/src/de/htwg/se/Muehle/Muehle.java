@@ -27,7 +27,6 @@ public final class Muehle {
 		
 		tui.showHelp();
 		tui.showGame();
-		System.out.println(tuCo.nextInstruction());
 		final Scanner in = new Scanner(System.in);
 				
 		while (in.hasNext()) {
