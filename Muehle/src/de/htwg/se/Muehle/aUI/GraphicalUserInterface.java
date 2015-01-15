@@ -32,6 +32,7 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 	private static final int BOARDYLENGTH = 500;
 	private static final int GAMEXLENGTH = 550;
 	private static final int GAMEYLENGTH = 500;
+	private static final int WIDTH = 800;
 	
 	private static final int PIXELZERO = 0;
 	private static final int PIXELTWENTY = 20;
@@ -54,6 +55,30 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 	private static final int PIXELTHREEHUNDREDFOURTYFIVE = 345;
 	private static final int PIXELFOURHUNDREDSEVENTY = 470;
 	
+	private static final int PZERO = 0;
+	private static final int PONE = 1;
+	private static final int PTWO = 2;
+	private static final int PTHREE = 3;
+	private static final int PFOUR = 4;
+	private static final int PFIVE = 5;
+	private static final int PSIX = 6;
+	private static final int PSEVEN = 7;
+	private static final int PEIGHT = 8;
+	private static final int PNINE = 9;
+	private static final int PTEN = 10;
+	private static final int PELEVEN = 11;
+	private static final int PTWELVE = 12;
+	private static final int PTHIRTEEN = 13;
+	private static final int PFOURTEEN = 14;
+	private static final int PFIFTEEN = 15;
+	private static final int PSIXTEEN = 16;
+	private static final int PSEVENTEEN = 17;
+	private static final int PEIGHTTEEN = 18;
+	private static final int PNINETEEN = 19;
+	private static final int PTWENTY = 20;
+	private static final int PTWENTYONE = 21;
+	private static final int PTWENTYTWO = 22;
+	private static final int PTWENTYTHREE = 23;	
 	
 	private IPlayer playerOne, playerTwo;
 	private IBoard board;
@@ -139,7 +164,7 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		sidebar.add(help);
 		sidebar.add(restart);
 		sidebar.add(positions);
-		sidebar.setPreferredSize(new Dimension(250, GAMEYLENGTH));
+		sidebar.setPreferredSize(new Dimension(PIXELTWOHUNDREDFIFTY, GAMEYLENGTH));
 		
 		
 		JLabel pos0 = new JLabel();
@@ -238,36 +263,36 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		pos23.setIcon(empty);
 		pos23.setBounds(BOARDCOORD3, BOARDCOORD4, TOKENWIDTH, TOKENWIDTH);
 		
-		posList.put(0, pos0);
-		posList.put(1, pos1);
-		posList.put(2, pos2);
-		posList.put(3, pos3);
-		posList.put(4, pos4);
-		posList.put(5, pos5);
-		posList.put(6, pos6);
-		posList.put(7, pos7);
-		posList.put(8, pos8);
-		posList.put(9, pos9);
-		posList.put(10, pos10);
-		posList.put(11, pos11);
-		posList.put(12, pos12);
-		posList.put(13, pos13);
-		posList.put(14, pos14);
-		posList.put(15, pos15);
-		posList.put(16, pos16);
-		posList.put(17, pos17);
-		posList.put(18, pos18);
-		posList.put(19, pos19);
-		posList.put(20, pos20);
-		posList.put(21, pos21);
-		posList.put(22, pos22);
-		posList.put(23, pos23);
+		posList.put(PZERO, pos0);
+		posList.put(PONE, pos1);
+		posList.put(PTWO, pos2);
+		posList.put(PTHREE, pos3);
+		posList.put(PFOUR, pos4);
+		posList.put(PFIVE, pos5);
+		posList.put(PSIX, pos6);
+		posList.put(PSEVEN, pos7);
+		posList.put(PEIGHT, pos8);
+		posList.put(PNINE, pos9);
+		posList.put(PTEN, pos10);
+		posList.put(PELEVEN, pos11);
+		posList.put(PTWELVE, pos12);
+		posList.put(PTHIRTEEN, pos13);
+		posList.put(PFOURTEEN, pos14);
+		posList.put(PFIFTEEN, pos15);
+		posList.put(PSIXTEEN, pos16);
+		posList.put(PSEVENTEEN, pos17);
+		posList.put(PEIGHTTEEN, pos18);
+		posList.put(PNINETEEN, pos19);
+		posList.put(PTWENTY, pos20);
+		posList.put(PTWENTYONE, pos21);
+		posList.put(PTWENTYTWO, pos22);
+		posList.put(PTWENTYTHREE, pos23);
 		
 		boardP = new JPanel();
 		boardP.setLayout(null);
 		boardbg.setIcon(new ImageIcon(getClass().getResource("/de/htwg/se/resources/board.gif")));
 		boardP.setPreferredSize(new Dimension(GAMEXLENGTH, GAMEYLENGTH));
-		boardbg.setBounds(0, 0, BOARDXLENGTH, BOARDYLENGTH);		
+		boardbg.setBounds(PIXELZERO, PIXELZERO, BOARDXLENGTH, BOARDYLENGTH);		
 		boardP.add(pos0);
 		boardP.add(pos1);
 		boardP.add(pos2);
@@ -301,7 +326,7 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		sidebar.setBackground(Color.WHITE);
 		main.add(boardP);
 		main.add(sidebar);
-		main.setPreferredSize(new Dimension(800, GAMEYLENGTH));
+		main.setPreferredSize(new Dimension(WIDTH, GAMEYLENGTH));
 		message.setText(tuCon.getMessage() + "\n" + tuCon.nextInstruction());
 		
 		
