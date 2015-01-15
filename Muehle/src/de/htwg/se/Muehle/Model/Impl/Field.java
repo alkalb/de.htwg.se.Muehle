@@ -46,6 +46,9 @@ public class Field implements IField{
 		}
 		return false;
 	}
-	
+	@Override
+	public int hashCode(){
+		return playerOfField.hashCode() * 100 + fieldIndex;
+	}
 	
 }

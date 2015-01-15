@@ -59,5 +59,10 @@ public class FieldTest {
 		f1.setPlayerOfField(p2);
 		assertSame(p2, f1.getPlayerOfField());
 	}
+	
+	@Test
+	public void testHash(){
+		assertEquals(f1.hashCode(), f1Clone.hashCode());
+	}
 
 }
