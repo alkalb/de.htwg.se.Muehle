@@ -329,7 +329,10 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object source = e.getSource();
+		if(!(e.getSource() instanceof JButton)){
+			return;
+		}
+		JButton source = (JButton) e.getSource();
 		if(source.equals(help)){
 			showHelp();
 			
