@@ -45,7 +45,6 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 	private JTextArea message;
 	private JButton restart, help,submit;
 	private JPanel main, boardP, sidebar;
-	private static final int SIDEBARTHREE = 3;
 	
 	private final ImageIcon black = new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif"));
 	private final ImageIcon white = new ImageIcon(getClass().getResource("/de/htwg/se/resources/white.gif"));

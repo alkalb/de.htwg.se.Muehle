@@ -25,6 +25,7 @@ public final class Muehle {
 		TextualUserInterface tui = new TextualUserInterface(gaCo, tuCo);
 		GraphicalUserInterface gui = new GraphicalUserInterface(gaCo, tuCo);
 		
+		
 		tui.showHelp();
 		tui.showGame();
 		final Scanner in = new Scanner(System.in);
