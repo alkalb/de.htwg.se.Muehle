@@ -63,15 +63,15 @@ public class GameController implements IGameController {
 		IField[] fields = board.getFields();
 		int temp[] = connections.get(x);
 		if(temp[TOP] == -1){
-			if(fields[temp[BOTTOM]].getPlayerOfField().equals(p) && fields[connections.get(temp[BOTTOM])[BOTTOM]].getPlayerOfField().equals(p)){
+			if(otherTwoFieldsEqualOwner(p, fields[temp[BOTTOM]], fields[connections.get(temp[BOTTOM])[BOTTOM]])){
 				return true;
 			}
 		} else if (temp[BOTTOM] == -1){
-			if(fields[temp[TOP]].getPlayerOfField().equals(p) && fields[connections.get(temp[TOP])[TOP]].getPlayerOfField().equals(p)){
+			if(otherTwoFieldsEqualOwner(p, fields[temp[TOP]], fields[connections.get(temp[TOP])[TOP]])){
 				return true;
 			}
 		} else {
-			if(fields[temp[TOP]].getPlayerOfField().equals(p) && fields[temp[BOTTOM]].getPlayerOfField().equals(p)){
+			if(otherTwoFieldsEqualOwner(p, fields[temp[TOP]], fields[temp[BOTTOM]])){
 				return true;
 			}
 		}
@@ -79,19 +79,23 @@ public class GameController implements IGameController {
 		return false;
 	}
 	
+		private boolean otherTwoFieldsEqualOwner(IPlayer p, IField f1, IField f2){
+		return(f1.getPlayerOfField().equals(p) && f2.getPlayerOfField().equals(p));
+	}
+		
 	private boolean checkHorizontal(int x, IPlayer p){
 		IField[] fields = board.getFields();
 		int temp[] = connections.get(x);
 		if(temp[RIGHT] == -1){
-			if(fields[temp[LEFT]].getPlayerOfField().equals(p) && fields[connections.get(temp[LEFT])[LEFT]].getPlayerOfField().equals(p)){
+			if(otherTwoFieldsEqualOwner(p, fields[temp[LEFT]], fields[connections.get(temp[LEFT])[LEFT]])){
 				return true;
 			}
 		} else if (temp[LEFT] == -1){
-			if(fields[temp[RIGHT]].getPlayerOfField().equals(p) && fields[connections.get(temp[RIGHT])[RIGHT]].getPlayerOfField().equals(p)){
+			if(otherTwoFieldsEqualOwner(p, fields[temp[RIGHT]], fields[connections.get(temp[RIGHT])[RIGHT]])){
 				return true;
 			}
 		} else {
-			if(fields[temp[RIGHT]].getPlayerOfField().equals(p) && fields[temp[LEFT]].getPlayerOfField().equals(p)){
+			if(otherTwoFieldsEqualOwner(p, fields[temp[RIGHT]], fields[temp[LEFT]])){
 				return true;
 			}
 		}
@@ -99,14 +103,14 @@ public class GameController implements IGameController {
 		return false;
 	}
 	
-	
+
 	private boolean checkCorner(int x, IPlayer p){
 		
 		IField[] fields = board.getFields();
 		int temp[] = connections.get(x);
 		for(int i= 0; i<=CORNERCHECK; i++){
 			
-			if(temp[i] != -1 && fields[temp[i]].getPlayerOfField().equals(p) && fields[connections.get(temp[i])[i]].getPlayerOfField().equals(p)){
+			if(temp[i] != -1 && otherTwoFieldsEqualOwner(p, fields[temp[i]], fields[connections.get(temp[i])[i]])){
 				return true;
 			}
 		}
@@ -190,7 +194,7 @@ public class GameController implements IGameController {
 	}
 
 	private boolean isTokenStealable(int x) {
-		if(isMill(x, oppPlayer) && (oppPlayer.getTokenCount() > STEALABLECHECK || oppPlayer.getTokenCount() == STEALABLECHECK && oppPlayer.getPlaceableTokenCount() > 0)){
+		if(isMill(x, oppPlayer) && (oppPlayer.getTokenCount() > STEALABLECHECK || oppPlayer.getPlaceableTokenCount() > 0)){
 			return false;
 		}
 		
