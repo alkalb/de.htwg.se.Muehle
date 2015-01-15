@@ -10,12 +10,14 @@ public class TurnController extends Observable implements ITurnController{
 	private IGameController gameCont;
 	private String status;
 	private String message;
-	private static final String PLACE ="place";
-	private static final String MOVE ="move";
-	private static final String STEAL ="steal";
-	private static final String LOSE ="lose";
+	private static final String PLACE = "place";
+	private static final String MOVE = "move";
+	private static final String STEAL = "steal";
+	private static final String LOSE = "lose";
 	private static final int MININDEX = 0;
 	private static final int MAXINDEX = 23;
+	private static final String MISTAKE = "Bitte Zahl zwischen 0 und 23 angeben.";
+	private static final String SUCCESS = "Stein erfolgreich gesetzt.";
 	
 	public TurnController(IGameController gc){
 		gameCont = gc;
@@ -37,10 +39,10 @@ public class TurnController extends Observable implements ITurnController{
 					return;
 				} else {
 					gameCont.nextPlayer();
-					message = "Stein erfolgreich gesetzt.";
+					message = SUCCESS;
 					if(gameCont.getCurrPlayer().getPlaceableTokenCount() == 0){
 						status = MOVE;
-						message = "Stein erfolgreich gesetzt,\nSetzphase beendet";
+						message = SUCCESS + "\nSetzphase beendet";
 					}
 					notifyObservers();
 					return;
@@ -51,7 +53,7 @@ public class TurnController extends Observable implements ITurnController{
 				return;
 			}
 		} catch(NumberFormatException e) {
-			message = "Bitte Zahl zwischen 0 und 23 angeben.";
+			message = MISTAKE;
 			notifyObservers();
 		}
 	}
@@ -76,13 +78,10 @@ public class TurnController extends Observable implements ITurnController{
 					return;
 				} else {
 					gameCont.nextPlayer();
-					message = "Der Stein wurde erfolgreich gesetzt.";
+					message = SUCCESS;
 					notifyObservers();
 					return;
 				}
-				
-				
-				
 			} else {
 				message = "Zug nicht möglich, bitte Spielfeld beachten.";
 				notifyObservers();
@@ -135,7 +134,7 @@ public class TurnController extends Observable implements ITurnController{
 			}
 			
 		} catch(NumberFormatException e){
-			message = "Bitte Zahl zwischen 0 und 23 angeben.";
+			message = MISTAKE;
 			notifyObservers();
 		}
 	}
