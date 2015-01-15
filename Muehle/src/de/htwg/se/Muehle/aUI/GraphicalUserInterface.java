@@ -329,14 +329,12 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(!(e.getSource() instanceof JButton)){
-			return;
-		}
-		JButton source = (JButton) e.getSource();
-		if(source.equals(help)){
+		Object src = e.getSource();
+		
+		if(src.equals(help)){
 			showHelp();
 			
-		} else if(source.equals(restart)){
+		} else if(src.equals(restart)){
 			message.setText("restart\n restart");
 		} else {
 			sendInput();
