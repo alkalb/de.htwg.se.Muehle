@@ -88,7 +88,7 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 	private Map<Integer, JLabel> posList;
 	private JTextField source, target;
 	private JTextArea message;
-	private JButton restart, help,submit;
+	private JButton help,submit;
 	private JPanel main, boardP, sidebar;
 	
 	private final ImageIcon black = new ImageIcon(getClass().getResource("/de/htwg/se/resources/black.gif"));
@@ -123,8 +123,6 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		target = new JTextField("");
 		source.setEditable(false);
 		
-		restart = new JButton("Neustart");
-		restart.addActionListener(this);
 		help = new JButton("Hilfe");
 		help.addActionListener(this);
 		submit = new JButton("Senden");
@@ -146,7 +144,6 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		submit.setBounds(PIXELFIFTY, PIXELTHREEHUNDREDTWENTY, PIXELONEHUNDRED, PIXELTWENTYFIVE);
 		message.setBounds(PIXELZERO, PIXELTHREEHUNDREDFOURTYFIVE, PIXELTWOHUNDREDFIFTY, PIXELONEHUNDREDTWENTYFIVE);
 		help.setBounds(PIXELZERO, PIXELFOURHUNDREDSEVENTY, PIXELNINETY, PIXELTHIRTY);
-		restart.setBounds(PIXELONEHUNDRED, PIXELFOURHUNDREDSEVENTY, PIXELNINETY, PIXELTHIRTY);
 		message.setEditable(false);
 		
 		
@@ -162,7 +159,6 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		sidebar.add(submit);
 		sidebar.add(message);
 		sidebar.add(help);
-		sidebar.add(restart);
 		sidebar.add(positions);
 		sidebar.setPreferredSize(new Dimension(PIXELTWOHUNDREDFIFTY, GAMEYLENGTH));
 		
@@ -380,8 +376,6 @@ public class GraphicalUserInterface extends JFrame implements ActionListener, IO
 		if(src.equals(help)){
 			showHelp();
 			
-		} else if(src.equals(restart)){
-			message.setText("restart\n restart");
 		} else {
 			sendInput();
 		}
